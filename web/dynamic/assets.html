@@ -1,0 +1,40 @@
+pwa.inc
+<!-- __________ -->
+<link rel="manifest" href="homescreen-manifest.json" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link rel="apple-touch-icon" href="[##cms.cms.cdn##]/images/custom_icon.png" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="theme-color" content="#f59900" />
+
+<!-- __________________________________________________________ -->
+ <basis core="call" file="tour/view/ver.1/Fa" pageindexid="1"></basis>
+<!-- __________________________________________________________ -->
+ <basis core="call" file="tour/view/ver.1/Fa" pageindexid="2"></basis>
+<!-- __________________________________________________________ -->
+
+homescreen-manifest.json { "name": "alrefah", "short_name": "alrefah",
+"description": "", "start_url": "/", "display": "standalone",
+"background_color": "#ffffff", "theme_color": "#f59900", "icons": [ { "src":
+"[##cms.cms.cdn##]/images/custom_icon_192.png", "sizes": "192x192", "type":
+"image/png" }, { "src": "[##cms.cms.cdn##]/images/custom_icon_512.png", "sizes":
+"512x512", "type": "image/png" } ] }
+
+<!-- __________________________________________________________ -->
+<script
+  src="[##cms.cms.cdn##]/js/alrefah-core.js"
+  type="text/javascript"
+></script>
+<!-- __________________________________________________________ -->
+<basis
+  core="call"
+  file="search/engine/ver.1/Fa"
+  pageindexid="1"
+  lid="2"
+></basis>
+<!-- __________________________________________________________ -->
+<link
+  href="[##cms.cms.cdn##]/css/alrefah.ui.min.css"
+  type="text/css"
+  rel="stylesheet"
+/>

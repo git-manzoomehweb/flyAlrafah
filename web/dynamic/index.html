@@ -1,0 +1,648 @@
+<basis
+  core="dbsource"
+  source="basiscore"
+  lid="2"
+  mid="1"
+  name="db"
+  catid="215102"
+>
+  <member
+    name="RoutesList"
+    type="list"
+    perpage="8"
+    propertyid="3087924,3087926,3087928,3087925,3087927,3087929"
+    order="ord"
+  />
+</basis>
+<basis
+  core="dbsource"
+  name="db"
+  source="basiscore"
+  lid="2"
+  mid="1"
+  usedforid="2378895"
+>
+  <member typeid="159" name="blog-first" type="view" />
+</basis>
+
+<basis
+  core="dbsource"
+  source="basiscore"
+  lid="2"
+  mid="1"
+  name="db"
+  catid="215104"
+>
+  <member
+    name="article-list"
+    type="list"
+    link="article.bc"
+    propertyid="7245,7246"
+    size="632x754"
+    order="ord"
+    postsql="select * from [db.article-list] LIMIT 1"
+  />
+  <member
+    name="article-list2"
+    type="list"
+    link="article.bc"
+    perpage="5"
+    propertyid="7245,7246"
+    size="306x300"
+    order="ord"
+  />
+</basis>
+<basis
+  core="dbsource"
+  name="db"
+  source="basiscore"
+  lid="2"
+  mid="1"
+  usedforid="2378896"
+>
+  <member typeid="159" name="FAQ" type="view" />
+</basis>
+
+<basis
+  core="dbsource"
+  name="db"
+  source="basiscore"
+  lid="2"
+  mid="1"
+  usedforid="2378909"
+>
+  <member typeid="159" name="About-us" type="view" />
+</basis>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover"
+    />
+    <!-- Title & Description -->
+    <title>Alrefah Travel | flight booking | hotel booking</title>
+    <meta
+      name="description"
+      content="Booking the best flight and hotel with Alrefah Travel"
+    />
+    <!-- canonical for Homepage -->
+    <link
+      rel="canonical"
+      href="[##cms.request.:scheme##]://[##cms.request.full-url##]"
+    />
+    <!-- fill items with Agancy Info -->
+    <meta name="og:locale" content="en-US" />
+    <meta
+      property="og:title"
+      content="Alrefah Travel | flight booking | hotel booking"
+    />
+    <meta
+      property="og:url"
+      content="[##cms.request.:scheme##]://[##cms.request.full-url##]"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Alrefah Travel" />
+    <meta
+      property="og:image"
+      content="https://alrefah.travel/images/custom_image_1200x630.png"
+    />
+    <meta property="og:image:alt" content="Alrefah Travel logo" />
+    <meta
+      property="og:description"
+      content="Booking the best flight and hotel with Alrefah Travel"
+    />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content=" " />
+    <meta name="twitter:creator" content="Satrap Seir" />
+    <meta
+      name="twitter:image"
+      content="https://alrefah.travel/images/custom_image_1200x630.png"
+    />
+    <meta name="twitter:title" content=" " />
+    <meta name="twitter:description" content=" " />
+    <meta property="seo:robots" content="index, follow" />
+    <!-- samandehi-enamad optional -->
+    <meta name="enamad" content="" />
+    <meta name="samandehi" content="" />
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc" lid="2" />
+    <link
+      rel="stylesheet"
+      href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css"
+    />
+    <!-- define -->
+    <!-- <link
+      rel="preload"
+      as="image"
+      imagesrcset="image address"
+      fetchpriority="high"
+    /> -->
+    <!-- common styles for all page -->
+    <basis core="call" file="style.inc" lid="2" />
+  </head>
+  <body>
+    <basis core="call" file="header.inc" lid="2" />
+    <main class="my-3">
+      <h1 class="sr-only">Alrefah</h1>
+      <section class="w-full flex justify-center mb-16">
+        <div
+          class="px-5 w-full lg:px-5 xl:!w-[1280px] xl:!px-0 flex flex-col gap-4"
+        >
+          <div
+            class="w-full rounded-xl h-[265px] flex flex-col overflow-hidden"
+          >
+            <img
+              loading="lazy"
+              src="[##cms.cms.cdn##]/images/flight-bg.jpg"
+              alt="search-bg"
+              class="w-full h-[265px] flight-bg hidden"
+            />
+            <img
+              loading="lazy"
+              src="[##cms.cms.cdn##]/images/hotel-bg.jpg"
+              alt="search-bg"
+              class="w-full h-[265px] hotel-bg hidden"
+            />
+
+            <img
+              loading="lazy"
+              src="[##cms.cms.cdn##]/images/flighthotel-bg.jpg"
+              alt="search-bg"
+              class="w-full h-[265px] flighthotel-bg hidden"
+            />
+          </div>
+          <div class="w-full search-box-container en">
+            <div class="w-full bg-grd">
+              <div class="w-full" id="search-box">
+                <div class="w-full py-5 justify-center flex">
+                  <div class="loader">
+                    <div class="container">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <basis core="list" datamembername="db.RoutesList">
+        <layout>
+          <section class="w-full flex justify-center mb-16">
+            <div
+              class="px-5 w-full lg:px-5 xl:!w-[1280px] xl:!px-0 flex flex-col gap-4"
+            >
+              <div class="w-full border-t border-[#BF9ACB]"></div>
+
+              <div class="w-full flex justify-center">
+                <h2
+                  class="w-fit px-3 text-center text-xl font-medium mt-[-30px] bg-white"
+                >
+                  Explore Popular Routes Subtitle
+                </h2>
+              </div>
+              <div class="w-full grid grid-cols-4 gap-3 mt-4">@child</div>
+            </div>
+          </section>
+        </layout>
+        <face>
+          <article
+            class="Explore-card cursor-pointer group hover:border-primary-400 p-2 border border-[#D4D4D8] rounded-xl flex justify-between"
+          >
+            <div class="flex flex-col gap-2 mt-3">
+              <div class="flex items-center gap-3">
+                <div class="flex flex-col gap-3 relative">
+                  <p class="dep-name">@prp_3087924</p>
+                  <span
+                    class="text-xs group-hover:text-primary-400 text-zinc-500 absolute left-0 top-6"
+                    >@prp_3087926</span
+                  >
+                  <p class="dep-id hidden">@prp_3087928</p>
+                </div>
+                <div class="w-[97px] relative">
+                  <span class="absolute left-[40%] top-[-12px] airplane">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_116_602)">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M17.8466 14.2753C18.9732 14.2127 20.1873 13.601 20.1893 12.4069C20.1917 11.2094 18.9781 10.5982 17.8476 10.5366C17.0432 10.496 16.2301 10.5053 15.4433 10.5146L15.3147 10.5161C15.1622 10.5209 15.1397 10.5121 15.0712 10.3645C14.5509 9.21441 14.0004 8.07805 13.5314 7.12013C13.2111 6.45367 12.7564 6.06542 12.1828 5.97007C11.8342 5.90993 11.4924 5.89869 11.1306 5.88793C10.9888 5.88304 10.8455 5.87864 10.6988 5.87081C10.6049 5.86592 10.5125 5.89966 10.4431 5.96421C10.3746 6.02875 10.3355 6.11872 10.3345 6.21358L10.3008 10.4994L8.39476 10.6745L7.29409 9.33617C7.22661 9.25793 7.13028 9.20952 7.02662 9.20952L5.59981 9.2105C5.4937 9.21099 5.39346 9.2594 5.32794 9.3435C5.26242 9.4276 5.23944 9.53664 5.26486 9.64031L5.95529 12.4089L5.26535 15.175C5.23944 15.2781 5.26291 15.3877 5.32892 15.4713C5.33723 15.4825 5.34652 15.4928 5.3563 15.5026C5.42084 15.5671 5.50886 15.6043 5.60079 15.6043L7.02762 15.6033C7.13177 15.6028 7.23005 15.5564 7.29607 15.4757L8.39332 14.1242L10.3013 14.309C10.3086 15.1232 10.3267 17.3387 10.335 18.5997C10.3355 18.6941 10.3795 18.7851 10.4436 18.8491C10.5125 18.9141 10.6049 18.9479 10.6988 18.943C10.8435 18.9352 10.9858 18.9308 11.1267 18.9259C11.4729 18.9151 11.8308 18.9034 12.1819 18.8457C12.7637 18.7469 13.2048 18.3704 13.5295 17.6976C14.0057 16.7187 14.5578 15.5799 15.0678 14.4508C15.1323 14.309 15.1577 14.2934 15.3191 14.2963C16.1327 14.308 16.9982 14.3168 17.8466 14.2753Z"
+                          fill="#F5C412"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_116_602">
+                          <rect
+                            width="16.5962"
+                            height="17.2877"
+                            fill="white"
+                            transform="translate(12.2244) rotate(45)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                  <span class="w-full h-[1px] bg-primary-400 flex"></span>
+                </div>
+                <div class="flex flex-col gap-3 relative">
+                  <p class="des-name">@prp_3087925</p>
+
+                  <span
+                    class="text-xs group-hover:text-primary-400 text-zinc-500 absolute left-0 top-6"
+                    >@prp_3087927</span
+                  >
+                  <p class="des-id hidden">@prp_3087929</p>
+                </div>
+              </div>
+            </div>
+            <button
+              class="w-[61px] h-[61px] flex justify-center items-center rounded-xl bg-secondary-600"
+              type="button"
+            >
+              <span class="group-hover:scale-125">
+                <svg
+                  width="9"
+                  height="17"
+                  viewBox="0 0 9 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1.5L8 8.5L1 15.5"
+                    stroke="white"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></span>
+            </button>
+          </article>
+        </face>
+      </basis>
+
+      <section class="w-full flex justify-center mb-16">
+        <div
+          class="px-5 w-full lg:px-5 xl:!w-[1280px] xl:!px-0 flex items-center justify-between gap-4"
+        >
+          <basis core="print" datamembername="db.blog-first">
+            <face filter="valueId=4162979">
+              <div class="flex items-center gap-3">
+                <img
+                  loading="lazy"
+                  width="53"
+                  height="53"
+                  src="[##cms.cms.cdn##]/images/icon-secondnv.png"
+                  alt="icon"
+                  class="w-[35px] h-[35px]"
+                />
+                <svg
+                  width="1"
+                  height="40"
+                  viewBox="0 0 1 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="0.5"
+                    y1="2.18558e-08"
+                    x2="0.499998"
+                    y2="40"
+                    stroke="#D4D4D8"
+                  />
+                </svg>
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-medium">@text</p>
+                  <div class="text-xs text-secondary-400">@largetext</div>
+                </div>
+              </div>
+            </face>
+          </basis>
+          <basis core="print" datamembername="db.blog-first">
+            <face filter="valueId=4162980">
+              <div class="flex items-center gap-3">
+                <img
+                  loading="lazy"
+                  width="53"
+                  height="53"
+                  src="[##cms.cms.cdn##]/images/flight-df.svg"
+                  alt="icon"
+                  class="w-[35px] h-[35px]"
+                />
+                <svg
+                  width="1"
+                  height="40"
+                  viewBox="0 0 1 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="0.5"
+                    y1="2.18558e-08"
+                    x2="0.499998"
+                    y2="40"
+                    stroke="#D4D4D8"
+                  />
+                </svg>
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-medium">@text</p>
+                  <div class="text-xs text-secondary-400">@largetext</div>
+                </div>
+              </div>
+            </face>
+          </basis>
+          <basis core="print" datamembername="db.blog-first">
+            <face filter="valueId=4162981">
+              <div class="flex items-center gap-3">
+                <img
+                  loading="lazy"
+                  width="53"
+                  height="53"
+                  src="[##cms.cms.cdn##]/images/icon-first-nv.png"
+                  alt="icon"
+                  class="w-[35px] h-[35px]"
+                />
+                <svg
+                  width="1"
+                  height="40"
+                  viewBox="0 0 1 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="0.5"
+                    y1="2.18558e-08"
+                    x2="0.499998"
+                    y2="40"
+                    stroke="#D4D4D8"
+                  />
+                </svg>
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-medium">@text</p>
+                  <div class="text-xs text-secondary-400">@largetext</div>
+                </div>
+              </div>
+            </face>
+          </basis>
+
+          <basis core="print" datamembername="db.blog-first">
+            <face filter="valueId=4162982">
+              <div class="flex items-center gap-3">
+                <img
+                  loading="lazy"
+                  width="53"
+                  height="53"
+                  src="[##cms.cms.cdn##]/images/support-df.svg"
+                  alt="icon"
+                  class="w-[35px] h-[35px]"
+                />
+                <svg
+                  width="1"
+                  height="40"
+                  viewBox="0 0 1 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="0.5"
+                    y1="2.18558e-08"
+                    x2="0.499998"
+                    y2="40"
+                    stroke="#D4D4D8"
+                  />
+                </svg>
+                <div class="flex flex-col gap-2">
+                  <p class="text-sm font-medium">@text</p>
+                  <div class="text-xs text-secondary-400">@largetext</div>
+                </div>
+              </div>
+            </face>
+          </basis>
+        </div>
+      </section>
+
+      <section class="w-full flex justify-center mb-16">
+        <div
+          class="px-5 w-full lg:px-5 xl:!w-[1280px] xl:!px-0 flex flex-col gap-4"
+        >
+          <p class="text-secondary-400">Blog & News</p>
+          <h3 class="font-bold text-2xl">
+            Tips and Tricks for Planning Your Dream Trip
+          </h3>
+          <div class="w-full flex gap-4">
+            <basis core="list" datamembername="db.article-list">
+              <face filter="link is null">
+                <a
+                  href="/article.bc?lid=2&id=@id"
+                  class="h-[913px] group flex flex-col gap-11p w-1/2"
+                >
+                  <div class="w-full h-[754px] overflow-hidden rounded-lg">
+                    <img
+                      loading="lazy"
+                      src="@00632X00754prp"
+                      width="632"
+                      height="754"
+                      alt="@title"
+                      class="w-full h-full group-hover:scale-110 transition-all duration-200 ease-in-out object-cover rounded-lg"
+                    />
+                  </div>
+                  <span class="text-sm text-secondary-400">@prp_7245</span>
+                  <p class="text-xl font-medium line-clamp-1">@title</p>
+                  <p class="line-clamp-2 text-sm">@prp_7246</p>
+                </a>
+              </face>
+              <face>
+                <a
+                  href="@link"
+                  class="h-[913px] group flex flex-col gap-11p w-1/2"
+                >
+                  <div class="w-full h-[754px] overflow-hidden rounded-lg">
+                    <img
+                      loading="lazy"
+                      src="@00632X00754prp"
+                      width="632"
+                      height="754"
+                      alt="@title"
+                      class="w-full h-full group-hover:scale-110 transition-all duration-200 ease-in-out object-cover rounded-lg"
+                    />
+                  </div>
+                  <span class="text-sm text-secondary-400">@prp_7245</span>
+                  <p class="text-xl font-medium line-clamp-1">@title</p>
+                  <p class="line-clamp-2 text-sm">@prp_7246</p>
+                </a>
+              </face>
+            </basis>
+
+            <div class="grid grid-cols-2 w-1/2 gap-4 wor-gap">
+              <basis core="list" datamembername="db.article-list2">
+                <face filter="RowNumber<>1 and link is null">
+                  <a
+                    href="/article.bc?lid=2&id=@id"
+                    class="h-fit group flex flex-col gap-11p"
+                  >
+                    <div class="w-full h-[300.33px] overflow-hidden rounded-lg">
+                      <img
+                        loading="lazy"
+                        width="306"
+                        height="300"
+                        src="@00306X00300prp"
+                        alt="@title"
+                        class="w-full h-full group-hover:scale-110 transition-all duration-200 ease-in-out object-cover rounded-lg"
+                      />
+                    </div>
+                    <span class="text-sm text-secondary-400">@prp_7245</span>
+                    <p class="text-xl font-medium line-clamp-1">@title</p>
+                    <p class="line-clamp-2 text-sm">@prp_7246</p>
+                  </a>
+                </face>
+                <face filter="RowNumber<>1">
+                  <a href="@link" class="h-fit group flex flex-col gap-11p">
+                    <div class="w-full h-[300.33px] overflow-hidden rounded-lg">
+                      <img
+                        loading="lazy"
+                        width="306"
+                        height="300"
+                        src="@00306X00300prp"
+                        alt="@title"
+                        class="w-full h-full group-hover:scale-110 transition-all duration-200 ease-in-out object-cover rounded-lg"
+                      />
+                    </div>
+                    <span class="text-sm text-secondary-400">@prp_7245</span>
+                    <p class="text-xl font-medium line-clamp-1">@title</p>
+                    <p class="line-clamp-2 text-sm">@prp_7246</p>
+                  </a>
+                </face>
+              </basis>
+            </div>
+          </div>
+        </div>
+      </section>
+      <basis core="print" datamembername="db.FAQ">
+        <layout>
+          <section class="w-full flex justify-center mb-16">
+            <div
+              class="px-5 w-full lg:px-5 xl:!w-[1280px] xl:!px-0 flex flex-col gap-6"
+            >
+              <div class="w-full border-t border-[#BF9ACB]"></div>
+
+              <div class="w-full flex justify-center">
+                <h4
+                  class="w-fit px-3 text-center text-xl font-medium mt-[-35px] bg-white"
+                >
+                  Frequently Asked Questions
+                </h4>
+              </div>
+              <img
+                loading="lazy"
+                src="[##cms.cms.cdn##]/images/common-qs.jpg"
+                alt="common-qs"
+                class="w-full h-[256px] rounded-xl"
+              />
+              <div class="w-full flex flex-col common-question">@child</div>
+            </div>
+          </section>
+        </layout>
+        <face filter="Question not in('Title')">
+          <div class="box group flex w-full flex-col gap-3 bg-white">
+            <div
+              class="w-full flex items-center cursor-pointer justify-between"
+            >
+              <div class="flex items-center gap-2 h-20">
+                <div
+                  class="transition-all font-bold text-2xl qs-count ease-in-out"
+                >
+                  @RowNumber
+                </div>
+                <div class="text-xl font-medium transition-all ease-in-out">
+                  @text
+                </div>
+              </div>
+              <div
+                class="plus bg-secondary-50 overflow-hidden rounded-lg w-12 h-12 flex justify-center items-center"
+              >
+                <div
+                  class="w-[16.31px] flex justify-center items-center h-[16.31px] relative"
+                >
+                  <span class="absolute"
+                    ><svg
+                      width="18"
+                      height="3"
+                      viewBox="0 0 18 3"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9 0.881792C9.50037 0.881792 9.20503 0.881792 9.5 0.881792L9.90625 0.881592H16.25C16.7504 0.881592 17.1562 1.28735 17.1562 1.78784C17.1562 2.06165 17.0347 2.30706 16.8429 2.47309C16.6843 2.61072 16.4766 2.69409 16.25 2.69409H9.90625H9.5C9.27734 2.69409 9.50037 2.69409 9 2.69409C8.49963 2.69409 8.60938 2.69409 8.35047 2.69409H8.09375H1.75C1.24968 2.69409 0.84375 2.28833 0.84375 1.78784C0.84375 1.28735 1.24968 0.881592 1.75 0.881592H8.09375L8.5 0.881777C8.84766 0.881607 8.49963 0.881792 9 0.881792Z"
+                        fill="#935AA6"
+                      />
+                    </svg>
+                  </span>
+                  <span class="rotate-90 absolute"
+                    ><svg
+                      width="18"
+                      height="3"
+                      viewBox="0 0 18 3"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9 0.881792C9.50037 0.881792 9.20503 0.881792 9.5 0.881792L9.90625 0.881592H16.25C16.7504 0.881592 17.1562 1.28735 17.1562 1.78784C17.1562 2.06165 17.0347 2.30706 16.8429 2.47309C16.6843 2.61072 16.4766 2.69409 16.25 2.69409H9.90625H9.5C9.27734 2.69409 9.50037 2.69409 9 2.69409C8.49963 2.69409 8.60938 2.69409 8.35047 2.69409H8.09375H1.75C1.24968 2.69409 0.84375 2.28833 0.84375 1.78784C0.84375 1.28735 1.24968 0.881592 1.75 0.881592H8.09375L8.5 0.881777C8.84766 0.881607 8.49963 0.881792 9 0.881792Z"
+                        fill="#935AA6"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div id="answer" class="w-full text-sm text-zinc-900 hidden">
+              <div>@largetext</div>
+            </div>
+          </div>
+        </face>
+      </basis>
+
+      <section class="w-full flex justify-center mb-16">
+        <div
+          class="px-5 w-full see-more-container lg:px-5 xl:!w-[1280px] xl:!px-0 flex flex-col"
+        >
+          <basis core="print" datamembername="db.About-us">
+            <face filter="Question in('Title')">
+              <h6 class="text-2xl font-bold mb-5">@text</h6>
+            </face>
+          </basis>
+          <basis core="print" datamembername="db.About-us">
+            <face filter="TypeID=129"
+              ><div
+                class="text-sm text-zinc-900 p line-clamp-5 transition-all duration-300"
+              >
+                @largetext
+              </div>
+            </face>
+          </basis>
+
+          <button
+            class="text-blue-600 w-fit hover:text-primary-900"
+            type="button"
+          >
+            More
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <basis core="call" file="footer.inc" lid="2" />
+  </body>
+</html>

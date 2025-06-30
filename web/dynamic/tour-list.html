@@ -1,0 +1,407 @@
+<basis
+  core="dbsource"
+  source="basiscore"
+  mid="18"
+  name="db"
+  lid="1"
+  usedforid="[##cms.query.catid##]"
+  ><member name="scalar" type="scalar" typeid="150"
+/></basis>
+<basis
+  core="dbsource"
+  source="basiscore"
+  lid="1"
+  mid="20"
+  name="db"
+  catid="[##cms.query.catid##]"
+  ><member
+    name="navigation"
+    type="tree"
+    request="navcatid"
+    parentid="[##cms.query.catid##]"
+/></basis>
+<basis
+  core="dbsource"
+  source="basiscore"
+  name="db"
+  mid="1"
+  lid="1"
+  usedforid="[##cms.query.aid##]"
+  ><member name="seotext" type="view"
+/></basis>
+<basis core="dbsource" source="basiscore" mid="20" name="db" lid="1"
+  ><member
+    name="tourcategory"
+    type="tree"
+    request="cat"
+    parentid="[##cms.query.catid##]"
+    order="ord" /><member
+    name="searchlistcat"
+    type="tree"
+    request="cat"
+    parentid="[##cms.query.catid##]"
+    order="ord"
+/></basis>
+<basis
+  core="dbsource"
+  source="basiscore"
+  name="db"
+  mid="1"
+  lid="1"
+  usedforid="[##cms.query.faqid##]"
+  ><member name="faq" type="view"
+/></basis>
+<basis
+  core="dbsource"
+  source="basiscore"
+  lid="1"
+  mid="1"
+  name="db"
+  catid="[##cms.query.newsid##]"
+  ><member
+    name="news"
+    type="list"
+    link="article.bc"
+    propertyid="7244,7248,7249"
+    perpage="3"
+    size="420x248"
+    typeid="159"
+    order="ord"
+/></basis>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[##cms.seo.title|(تورهای بابانوروز)##]</title>
+    <meta
+      name="description"
+      content="[##cms.seo.description|(تورهای بابانوروز)##]"
+    />
+    <link rel="canonical" href="[##cms.cms.full-url##]" />
+    <basis
+      core="dbsource"
+      source="hosting"
+      name="tag"
+      urlid="[##cms.seo.urlid##]"
+      ><member type="list" name="list" request="taglist" preview=""></member
+    ></basis>
+    <basis core="print" datamembername="tag.list"
+      ><face filter="key='canonical'"
+        ><link rel="canonical" href="@value" /></face
+      ><face><meta property="@key" content="@value" /></face
+    ></basis>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link
+      rel="apple-touch-icon"
+      href="[##cms.cms.cdn##]/images/custom_icon.png"
+    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="theme-color" content="#FCA30E" />
+    <link rel="manifest" href="homescreen-manifest.inc" />
+    <link
+      rel="stylesheet"
+      href="[##cms.cms.cdn##]/css/babanowrouz.ui.min.css"
+    />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+  </head>
+  <body
+    onload="loadContentTourListPage('[##cms.query.catid##]','tour', 'load-tour-list')"
+  >
+    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]" />
+    <main class="dir-rtl font-danaregular">
+      <div class="h-12 w-full bg-primary-600">
+        <basis core="print" datamembername="db.scalar"
+          ><face><h1 class="h-0 w-0 invisible">@column1</h1></face></basis
+        >
+      </div>
+      <div class="max-w-7xl mx-auto mt-5 mb-8 w-95per">
+        <div class="breadcrumbs font-danaregular text-right">
+          <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li
+              class="inline-block text-neutralcolor-600 text-sm font-danaregular"
+              itemprop="itemListElement"
+              itemscope
+              itemtype="https://schema.org/ListItem"
+            >
+              <a itemprop="item" href="/" aria-label="home"
+                ><span itemprop="name">خانه</span>
+                <meta itemprop="position" content="1" />
+              </a>
+            </li>
+            <basis core="print" datamembername="db.navigation">
+              <face filter="RowNumber=max(RowNumber) and  title <> 'ریشه' ">
+                <li
+                  class="inline-block text-neutralcolor-600 text-sm font-danaregular"
+                  itemprop="itemListElement"
+                  itemscope
+                  itemtype="https://schema.org/ListItem"
+                >
+                  <span itemprop="name"><span> > </span>@title</span>
+                  <meta itemprop="position" content="@rownumber" />
+                </li>
+              </face>
+              <face filter="link is null and title <> 'ریشه'">
+                <li
+                  class="inline-block text-neutralcolor-600 text-sm font-danaregular"
+                  itemprop="itemListElement"
+                  itemscope
+                  itemtype="https://schema.org/ListItem"
+                >
+                  <a
+                    itemprop="item"
+                    href="/tour-list.bc?catid=@parentcatid&reqtype=1"
+                    aria-label="@title"
+                    ><span itemprop="name"><span> > </span> @title</span>
+                    <meta itemprop="position" content="@rownumber" />
+                  </a>
+                </li>
+              </face>
+              <face filter=" title <> 'ریشه'">
+                <li
+                  class="inline-block text-neutralcolor-600 text-sm font-danaregular"
+                  itemprop="itemListElement"
+                  itemscope
+                  itemtype="https://schema.org/ListItem"
+                >
+                  <a itemprop="item" href="@link" aria-label="@title"
+                    ><span itemprop="name"><span> > </span> @title</span>
+                    <meta itemprop="position" content="@rownumber" />
+                  </a>
+                </li>
+              </face>
+            </basis>
+          </ul>
+        </div>
+      </div>
+      <section class="max-w-7xl mx-auto mt-4 w-95per">
+        <div class="flex justify-between items-center h-12">
+          <div class="w-9/12">
+            <ul
+              class="flex gap-x-2 overflow-x-auto overflow-y-hidden scroll-my-3"
+            >
+              <basis core="print" datamembername="db.tourcategory">
+                <layout>@child </layout>
+                <face filter="catid in([##cms.query.catid##])">
+                  <li
+                    onclick="LoadCatTour('load-items.bc', '@catid' , 'tour' , 'load-tour-list' ,this)"
+                    tour-catid="@catid"
+                    class="tour-category text-neutralcolor-500 rounded-32px font-danaregular text-base border border-neutralcolor-500 h-12 leading-48px px-4 hover:border-primary-400 hover:bg-primary-100 hover:text-neutralcolor-700 cursor-pointer"
+                  >
+                    <span>@title </span>
+                  </li>
+                </face>
+              </basis>
+              <basis core="print" datamembername="db.tourcategory">
+                <layout>@child </layout>
+                <face filter="catid <>[##cms.query.catid##] ">
+                  <li
+                    onclick="LoadCatTour('load-items.bc', '@catid' , 'tour' , 'load-tour-list' ,this)"
+                    tour-catid="@catid"
+                    class="tour-category text-neutralcolor-500 rounded-32px font-danaregular text-base border border-neutralcolor-500 h-12 leading-48px px-4 hover:border-primary-400 hover:bg-primary-100 hover:text-neutralcolor-700 cursor-pointer"
+                  >
+                    <span>@title </span>
+                  </li>
+                </face>
+              </basis>
+            </ul>
+          </div>
+          <div class="3/12">
+            <div
+              id="search-content-container"
+              class="w-full h-12 border border-neutralcolor-500 rounded-32px"
+            >
+              <form
+                id="search-content-tour"
+                action="search-content.bc"
+                method="get"
+                class="search-content relative flex justify-between w-full h-12"
+              >
+                <label
+                  for="searchcontent"
+                  class="absolute top-0 right-0 left-0 bottom-0"
+                  ><svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_51_1850)">
+                      <path
+                        d="M22.0863 14.0001C22.8415 14.0001 23.5805 14.1042 24.3031 14.3126C25.0258 14.5209 25.7061 14.8204 26.3441 15.211C26.9952 15.6146 27.5746 16.0964 28.0824 16.6563C28.5902 17.2162 29.0069 17.8282 29.3324 18.4922C29.671 19.1693 29.9086 19.879 30.0453 20.6211C30.182 21.3633 30.2113 22.112 30.1332 22.8672C30.0681 23.6224 29.8956 24.3484 29.6156 25.045C29.3357 25.7416 28.9678 26.3894 28.5121 26.9883L33.6293 32.1055C33.7335 32.1967 33.8181 32.3073 33.8832 32.4376C33.9483 32.5678 33.9874 32.7045 34.0004 32.8477C34.0134 32.9909 33.9971 33.1309 33.9516 33.2676C33.906 33.4044 33.8311 33.5248 33.727 33.629C33.6358 33.7331 33.5251 33.8178 33.3949 33.8829C33.2647 33.948 33.128 33.987 32.9848 34.0001C32.8415 34.0131 32.7048 33.9968 32.5746 33.9512C32.4444 33.9057 32.3207 33.8308 32.2035 33.7266L32.1059 33.6485L26.9887 28.5313C26.4809 28.9219 25.934 29.2442 25.348 29.4981C24.7621 29.752 24.1501 29.9376 23.5121 30.0547C22.8871 30.1719 22.2523 30.211 21.6078 30.1719C20.9633 30.1329 20.335 30.0157 19.723 29.8204C19.1111 29.6381 18.5284 29.3842 17.975 29.0586C17.4216 28.7331 16.9171 28.3425 16.4613 27.8868C15.9926 27.4441 15.5889 26.9525 15.2504 26.4122C14.9118 25.8718 14.6384 25.2956 14.4301 24.6836C14.2217 24.0717 14.0883 23.4467 14.0297 22.8086C13.9711 22.1706 13.9939 21.5326 14.098 20.8946C14.1892 20.2566 14.3552 19.6413 14.5961 19.0489C14.837 18.4564 15.1462 17.8998 15.5238 17.379C15.8884 16.8581 16.3148 16.3861 16.8031 15.9629C17.2914 15.5398 17.822 15.1849 18.3949 14.8985C18.9678 14.599 19.5668 14.3744 20.1918 14.2247C20.8168 14.0749 21.4483 14.0001 22.0863 14.0001ZM22.0863 16.1485C21.5004 16.1485 20.9275 16.2364 20.3676 16.4122C19.8077 16.5879 19.2803 16.8386 18.7855 17.1641C18.3038 17.4896 17.8773 17.877 17.5062 18.3262C17.1352 18.7754 16.8324 19.2735 16.598 19.8204C16.3767 20.3672 16.2367 20.9304 16.1781 21.5098C16.1195 22.0892 16.1488 22.6719 16.266 23.2579C16.3832 23.8308 16.5785 24.3744 16.852 24.8887C17.1254 25.403 17.4704 25.8685 17.8871 26.2852C18.3038 26.7019 18.7693 27.0469 19.2836 27.3204C19.7979 27.5938 20.348 27.7891 20.934 27.9063C21.5069 28.0235 22.0863 28.0528 22.6723 27.9942C23.2582 27.9356 23.8181 27.7956 24.352 27.5743C24.8988 27.3529 25.4001 27.0534 25.8559 26.6758C26.3116 26.2982 26.7022 25.8685 27.0277 25.3868C27.3533 24.905 27.6007 24.3809 27.7699 23.8145C27.9392 23.2481 28.0238 22.6719 28.0238 22.086C28.0238 21.6954 27.9848 21.3113 27.9066 20.9336C27.8285 20.556 27.7178 20.1849 27.5746 19.8204C27.4184 19.4558 27.2328 19.114 27.018 18.795C26.8031 18.476 26.559 18.1732 26.2855 17.8868C26.0121 17.6133 25.7126 17.3692 25.3871 17.1544C25.0616 16.9395 24.7165 16.7605 24.352 16.6172C24.0004 16.461 23.6326 16.3438 23.2484 16.2657C22.8643 16.1876 22.477 16.1485 22.0863 16.1485Z"
+                        fill="#71717A"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_51_1850">
+                        <rect
+                          width="20"
+                          height="20"
+                          fill="white"
+                          transform="matrix(1 0 0 -1 14 34)"
+                        />
+                      </clipPath>
+                    </defs></svg></label
+                ><input
+                  name="q"
+                  class="contect-searching bg-transparent outline-none w-full h-full pr-12"
+                  autocomplete="off"
+                  required
+                  type="text"
+                  id="searchcontent"
+                  placeholder="جستجو کشور"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div id="load-tour-list" class="load-tour-list my-5">
+          <div
+            class="w-full text-center relative z-10 flex justify-center loading mt-24 mb-24"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
+              viewBox="0 0 100 101"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                fill="currentColor"
+              ></path>
+              <path
+                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                fill="currentFill"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </section>
+      <basis core="print" datamembername="db.seotext"
+        ><layout
+          ><section
+            class="text-justify text-neutralcolor-900 my-8 max-w-7xl mx-auto w-95per"
+          >
+            @child
+          </section></layout
+        ><face filter="TypeID in(150,129,250)"
+          ><h2 class="text-xl font-danaregular mt-4 mb-2">@text</h2>
+          <div class="font-danaregular text-sm leading-6">@largetext</div></face
+        ></basis
+      >
+      <basis core="print" datamembername="db.faq"
+        ><layout
+          ><section class="max-w-7xl mx-auto mt-12 w-95per">
+            <h2 class="text-3xl font-danabold text-right text-neutralcolor-900">
+              سوالات متداول
+            </h2>
+            <span
+              class="text-neutralcolor-900 text-base font-danaregular mt-2 block"
+              >آماده پاسخگویی شبانه روزی به شما هستیم. لطفا پیش از تماس تلفنی یا
+              ارسال ایمیل سوالات متداول مشتریان را مطالعه فرمایید .
+            </span>
+            <ul class="mt-5">
+              @child
+            </ul>
+          </section></layout
+        ><face filter="RowNumber <>1"
+          ><li onclick="toggleFAQ(this)" class="my-3 cursor-pointer">
+            <div class="min-h-24 border border-neutralcolor-200 rounded-xl">
+              <div
+                class="w-95per mx-auto flex justify-between items-center min-h-24"
+              >
+                <h2 class="text-base font-danaregular">@text</h2>
+                <svg
+                  class="arrow-faq"
+                  width="49"
+                  height="48"
+                  viewBox="0 0 49 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.52 26.88C24.4263 26.88 24.3325 26.8613 24.2388 26.8238C24.145 26.7863 24.0747 26.7375 24.0278 26.6775L20.5122 23.325C20.3716 23.19 20.3013 23.0175 20.3013 22.8075C20.3013 22.5975 20.3716 22.4175 20.5122 22.2675C20.6685 22.1325 20.856 22.065 21.0747 22.065C21.2935 22.065 21.4731 22.1325 21.6138 22.2675L24.6138 25.1475L27.6138 22.2675C27.77 22.1325 27.9575 22.065 28.1763 22.065C28.395 22.065 28.5747 22.1325 28.7153 22.2675C28.8716 22.4175 28.9497 22.5975 28.9497 22.8075C28.9497 23.0175 28.8716 23.19 28.7153 23.325L25.2231 26.6775C25.0669 26.7375 24.9341 26.7863 24.8247 26.8238C24.7153 26.8613 24.6138 26.88 24.52 26.88Z"
+                    fill="#18181B"
+                  />
+                </svg>
+              </div>
+              <h3 class="answer-faq w-95per mx-auto mb-4 pt-4 border-t hidden">
+                @largetext
+              </h3>
+            </div>
+          </li></face
+        ></basis
+      >
+      <basis core="list" datamembername="db.news"
+        ><layout
+          ><section class="max-w-7xl mx-auto mt-12 w-95per mb-12">
+            <h2 class="text-3xl font-danabold text-neutralcolor-950 text-right">
+              مجله و اخبار
+            </h2>
+            <div class="flex justify-between gap-2 mt-7">@child</div>
+          </section></layout
+        ><face filter="link is null"
+          ><article
+            class="w-420px h-422px rounded-xl overflow-hidden hover:shadow-md"
+          >
+            <a href="/article.bc?id=@id"
+              ><figure class="rounded-xl overflow-hidden">
+                <img
+                  loading="lazy"
+                  class="w-420px h-248px object-cover"
+                  src="[##cms.cms.cdn##]/@00420X00248prp"
+                  width="420"
+                  height="248"
+                  alt="@title"
+                />
+              </figure>
+              <div class="w-95per mx-auto">
+                <h2 class="line-clamp-1 w-full my-5 text-xl font-danaregular">
+                  @title
+                </h2>
+                <div
+                  class="text-sm mt-4 text-justify line-clamp-4 font-danaregular"
+                >
+                  @prp_7244
+                </div>
+              </div></a
+            >
+          </article></face
+        ><face
+          ><article
+            class="w-420px h-422px rounded-xl overflow-hidden hover:shadow-md"
+          >
+            <a href="/@link"
+              ><figure class="rounded-xl overflow-hidden">
+                <img
+                  loading="lazy"
+                  class="w-420px h-248px object-cover"
+                  src="[##cms.cms.cdn##]/@00420X00248prp"
+                  width="420"
+                  height="248"
+                  alt="@title"
+                />
+              </figure>
+              <div class="w-95per mx-auto">
+                <h2 class="line-clamp-1 w-full my-5 text-xl font-danaregular">
+                  @title
+                </h2>
+                <div
+                  class="text-sm mt-4 text-justify line-clamp-4 font-danaregular"
+                >
+                  @prp_7244
+                </div>
+              </div></a
+            >
+          </article></face
+        ></basis
+      >
+    </main>
+    <!-- footer start-->
+    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+    <!-- footer end-->
+  </body>
+</html>

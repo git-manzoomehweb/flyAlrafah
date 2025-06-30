@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a,
+button,
+li,
+path,
+svg,
+span,
+.airplane {
+  transition: all 0.25s ease-in-out !important;
+}
+
+/* From Uiverse.io by terenceodonoghue */
+.loader {
+  height: 66px;
+  width: 66px;
+  position: relative;
+}
+.loader .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  height: 66px;
+  width: 66px;
+  animation: rotate_3922 1.2s linear infinite;
+  background-color: var(--secondary-500);
+  background-image: linear-gradient(
+    var(--secondary-800),
+    var(--secondary-400),
+    var(--primary-400),
+    var(--primary-600)
+  );
+}
+
+.loader .container span {
+  position: absolute;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: var(--secondary-500);
+  background-image: linear-gradient(
+    var(--secondary-800),
+    var(--secondary-400),
+    var(--primary-400),
+    var(--primary-600)
+  );
+}
+
+.loader .container span:nth-of-type(1) {
+  filter: blur(5px);
+}
+
+.loader .container span:nth-of-type(2) {
+  filter: blur(10px);
+}
+
+.loader .container span:nth-of-type(3) {
+  filter: blur(25px);
+}
+
+.loader .container span:nth-of-type(4) {
+  filter: blur(50px);
+}
+
+.loader .container::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: #fff;
+  border: solid 5px #ffffff;
+  border-radius: 50%;
+}
+
+@keyframes rotate_3922 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.Explore-card:hover .airplane {
+  animation: fly 1.4s linear;
+  transform: translateX(42px) scale(1.4);
+}
+@keyframes fly {
+  from {
+    transform: translateX(-46px) scale(1.4);
+  }
+
+  to {
+    transform: translateX(42px) scale(1.4);
+  }
+}
+.common-question .box.active #answer {
+  display: flex !important;
+  animation: fadeIn 0.2s;
+}
+.common-question .box.active .plus div span.rotate-90 {
+  opacity: 0;
+}
+@keyframes fadeIn {
+  from {
+    transform: scale(0.84);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

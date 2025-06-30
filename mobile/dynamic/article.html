@@ -1,0 +1,310 @@
+<basis
+  core="dbsource"
+  source="media"
+  lid="2"
+  name="db"
+  usedforid="[##cms.query.id##]"
+  sourcemid="article"
+>
+  <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
+
+<basis core='dbsource' name='captcha' source='trust_login'>
+    <member name='code' type='scalar' request='captcha'></member>
+</basis>
+<basis core="dbsource" source="basiscore"  lid="2"  mid="1" name="db" catid="[##cms.query.nid|(0)##]">
+    <member name="news" type="list" link="article.bc" propertyid="7244,7248,7249" perpage="3" size="420x248" typeid="159" order="ord" />
+</basis>
+<basis core="dbsource" source="userbehavior" name="db" usedforid="[##cms.query.id##]">
+    <member name="comment" type="list" order="ord" request="listcomment" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1"  lid="2"  usedforid="[##cms.query.id##]">
+    <member request="json-ld" type="scalar" name="json" />
+    <member name="view" type="view" />
+    <member name="related-article" type="list" blgid="222" size="136x136" link="article.bc" propertyid="7244,7248,7249" perpage="20" typeid="159" order="ord" />
+    <member name="data" type="view" request="rdfa" />
+</basis>
+<basis
+  core="dbsource"
+  source="media"
+  lid="2"
+  name="db"
+  usedforid="[##cms.query.id##]"
+  sourcemid="article"
+>
+  <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>[##cms.seo.title|(Alrafah article)##]</title>
+    <meta
+      name="description"
+      content="[##cms.seo.description|( AlRafah article)##]"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://[##cms.cms.full-url##]" />
+    <basis
+      core="dbsource"
+      source="hosting"
+      name="tag"
+      urlid="[##cms.seo.urlid##]"
+      ><member type="list" name="list" request="taglist" preview=""></member
+    ></basis>
+    <basis core="print" datamembername="tag.list"
+      ><face filter="key='canonical'"
+        ><link rel="canonical" href="@value" /></face
+      ><face><meta property="@key" content="@value" /></face
+    ></basis>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link
+      rel="apple-touch-icon"
+      href="[##cms.cms.cdn##]/images/custom_icon.png"
+    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="theme-color" content="#FCA30E" />
+    <link rel="manifest" href="homescreen-manifest.inc" />
+
+    <basis
+      core="call"
+      lid="2"
+      file="style.inc"
+      pageindex="[##cms.cms.pageindex##]"
+    />
+  </head>
+
+<body class="relative" onload="loadContentArticlePage()">
+    <basis core="call" lid="2"  file="header.inc" pageindex="[##cms.cms.pageindex##]" />
+    <main class="mb-7 ">
+        <div class="h-12 w-full bg-primary-600"> </div>
+       
+         <section class="w-full px-5 mt-5">
+                    <figure class="relative overflow-hidden h-40 rounded-xl ">
+              <basis core="print" datamembername="db.gallery">
+                <face>
+    <img loading="lazy" class="w-full h-40 rounded-xl object-cover " loading="lazy" src="@largeIMG" width="1280" height="538" alt="banner image">
+
+                </face>
+              </basis>          
+                      
+
+                      <basis core="print" datamembername="db.view">
+
+                        <face filter="TypeID in(150)">
+                               <figcaption class="bg-gradient-to-t from-black to-transparent h-28 absolute bottom-0 left-0 right-0 px-12 pt-5">
+                    <h1 class="text-white text-base font-bold">@text </h1>
+
+                </figcaption>
+                        </face>
+                      </basis>
+                  
+                    </figure>
+        </section>
+        <div class="w-full flex justify-center">
+            <div class="w-full flex-col px-5 flex mt-5  gap-22p">
+            <div class="w-full">
+                <basis core="print" datamembername="db.view">
+                    <layout>
+                        <section class="text-contents text-justify w-95per">@child </section>
+                    </layout>
+                    <face filter="TypeID in(150)">
+                        <h2 id="@valueID" class="text-lg font-bold mt-5 mb-2">@text</h2>
+                    </face>
+                    <face filter="TypeID in(129)">
+                        <div class="  text-sm">@largetext</div>
+                    </face>
+                    <face filter="TypeID in(250)">
+                        <h2 id="@valueID" class="text-lg font-bold mt-5 mb-2">@text</h2>
+                        <div class="  text-sm">@largetext</div>
+                    </face>
+                </basis>
+                <section class="comment-tour-details article-comment-main wide w-full mt-9">
+                    <div class="comment-tour-container flex gap-x-3">
+                        <h3 onclick="activeTebComment(this , 'info_submit_comment')" class="comment-tour-icon comment-tab-title flex items-center justify-center text-neutralcolor-500 rounded-32px   text-base border border-neutralcolor-500 h-12 leading-48px px-4 hover:border-primary-400 hover:bg-primary-100 hover:text-neutralcolor-700 cursor-pointer">Submit a Comment</h3>
+                        <h3 onclick="activeTebComment(this , 'opinion-info-box')" class="comment-tour-icon comment-tab-title  text-neutralcolor-500 justify-center flex items-center rounded-32px   text-base border border-neutralcolor-500 h-12 leading-48px px-4 hover:border-primary-400 hover:bg-primary-100 hover:text-neutralcolor-700 cursor-pointer">User Reviews </h3>
+                    </div>
+                    <div class="comment-box">
+                        <div id="info_submit_comment" class="info_submit_comment comment-boxes">
+                            <div id="OpinioUser-box">
+                                <form id="opinionForm" method="post" action="/OpinionAction.bc" onsubmit="SubmitOpinionForm(this , event)">
+                                    <div class="user-info-comment">
+                                        <div class="flname"><input class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 py-4 text-sm   my-3 focus:border-primary-400 focus:outline-primary-400" name="Username" placeholder="Full Name" type="text"
+                                                required></div>
+                                        <div class="phone"><input class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 py-4 text-sm   my-3 focus:border-primary-400 focus:outline-primary-400" name="_root.Phone" placeholder="phone number" type="text"></div>
+                                    </div>
+                                    <div class="comment">
+                                        <_textarea class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 py-4 text-sm   my-3 focus:border-primary-400 focus:outline-primary-400" name="OpinionMessage" placeholder="Enter your comment"
+                                            required></_textarea>
+                                    </div>
+                                    <div class="captcha-container flex-wrap flex justify-between items-center">
+                                        <div class="SecurityCodeRight w-1/2 "><input class="bg-neutralcolor-100 py-4 rounded-xl w-full leading-60px px-3 text-sm   focus:border-primary-400 focus:outline-primary-400" name="Captcha" placeholder="security code" type="text" required></div>
+                                        <div
+                                            class="SecurityCodeLeft justify-end flex gap-x-3 items-center w-1/2 "><span class="load-captcha"><img class="captchaa" src="/[##captcha.code.captcha##]"  alt="captcha code" width="80" height="40" /><input id="Captchaid" name="Captchaid" value="[##captcha.code.captcha##]" type="hidden" /></span>
+                                            <svg
+                                                onclick="refresh_captcha(this,event)" class="cursor-pointer" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.7857 6L14.5807 8.00215C13.8273 7.57761 12.9442 7.33333 12 7.33333C9.23858 7.33333 7 9.42267 7 12C7 12.4149 7.058 12.8171 7.16686 13.2M10.2143 18L9.41931 15.9978C10.1727 16.4224 11.0558 16.6667 12 16.6667C14.7614 16.6667 17 14.5773 17 12C17 11.5851 16.942 11.1829 16.8331 10.8"
+                                                    stroke="#e7b542" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <circle cx="12" cy="12" r="10" stroke="#e7b542" stroke-width="1.5" />
+                                                </svg>
+                                    </div>
+                                    <div class="submit-comment w-full"><input class="bg-primary-600 hover:bg-primary-700 rounded-3xl w-full block py-4 leading-48px min-w-32 px-3 text-sm   my-3" name="OpinionSubmit" id="OpinionSubmit" value="Post Comment" type="submit"></div>
+                                    <div><input name="productid" value="[##cms.query.id##]" type="hidden"><input name="mid" value="1" type="hidden"></div>
+                            </div>
+                            <div id="ResultOpinion"></div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="opinion-info-box" class="opinion-info-box comment-boxes">
+                        <div id="info_comment" class="info_comment">
+                            <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
+                                <layout>
+                                    <div class="user-opinion-txt-box">@Child</div>
+                                </layout>
+                                <face level="1">
+                                    <div class="opinionRow my-3 ">
+                                        <div class="user-opinion-txt bg-primary-50 text-sm rounded-xl px-3 py-6 my-3">
+                                            <div class="opinion-info flex justify-between"><span class="username-opinion font-bold">@username</span>
+                                                <div class="flex "><span class="createdate-opinion text-neutralcolor-800 text-sm mx-2  ">@createdate</span><button class=" " onclick="reactionSubmit('@id' , 'like')">👍 @like</button><button class=" "
+                                                        onclick="reactionSubmit('@id' , 'dislike')">👎 @dislike</button></div>
+                                            </div>
+                                            <p class="mt-4   text-sm">@comment</p>
+                                        </div>
+                                        <div class="replyCommentTxt">@Child</div>
+                                        <div class="replyComment Login-options my-3 text-left" onclick="Reply_Comment(this)"><span class="text-primary-800 cursor-pointer hover:text-primary-500 text-base font-bold px-3 border border-primary-300 rounded-lg mt-3">
+                                            Reply to Comment</span></div>
+                                        <div class="replyCommentForm hidden">
+                                            <form action="ReplyComment.bc" method="post" onsubmit="send_Reply(this , event)"><input class="reply-title bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 py-4 text-sm   my-3 focus:border-primary-400 focus:outline-primary-400" type="hidden" name="username" value="">
+                                                <_textarea
+                                                    class="bg-neutralcolor-100 rounded-xl w-full block leading-60px px-3 py-4 text-sm   my-3 focus:border-primary-400 focus:outline-primary-400" placeholder="Type your reply..." name="ReplyComment"
+                                                    required></_textarea><input type="hidden" name="parentid" value="@id"><input type="hidden" name="replyProductid" value="[##cms.query.id##]"><input name="mid" value="1" type="hidden"><input class="bg-primary-600 hover:bg-primary-700 rounded-3xl w-full block py-4 leading-48px min-w-32 px-3 text-sm   my-3"
+                                                        type="submit" value="submit"></form>
+                                        </div>
+                                    </div>
+                                </face>
+                                <face level="2">
+                                    <div class="opinionRowReply bg-primary-50 text-sm rounded-xl px-3 py-6 my-3 w-95per mr-auto">
+                                        <div class="user-opinion-txt">
+                                            <div class="opinion-info-reply flex justify-between"><span class="support-icon text-neutralcolor-800 text-sm mx-2 font-bold">@username</span>
+                                                <div class="flex "><span class="createdate-opinion text-neutralcolor-800 text-sm mx-2  ">@createdate</span><button class=" " onclick="reactionSubmit('@id' , 'like')">👍 @like</button><button class=" "
+                                                        onclick="reactionSubmit('@id' , 'dislike')">👎 @dislike</button></div>
+                                            </div>
+                                            <p class="mt-4   text-sm">@comment</p>
+                                        </div>
+                                        <div class="replyCommentTxt my-4">@Child</div>
+                                    </div>
+                                </face>
+                            </basis>
+                        </div>
+                    </div>
+            </div>
+            <div id="popuparticle" class="popup hidden">
+                <div class="fixed z-50 left-0 right-0 bottom-0 top-0 w-screen h-screen overflow-auto bg-black/40 flex justify-center items-center">
+                    <div class="popup-content bg-white rounded-xl p-5 border border-solid border-primary-600 w-2/3 m-auto"><span id="closePopuparticle" class="close">×</span>
+                        <div id="popupMessage" class=" "></div>
+                    </div>
+                </div>
+            </div>
+            </section>
+        </div>
+        <aside class="w-full">
+            <basis core="print" datamembername="db.view">
+                <layout>
+                    <div class="w-full">
+                        <div class="border-b-2 border-primary-600 w-full mb-3">
+                            <h2 class="h-12 w-fit px-4 leading-48px bg-primary-600 text-sm   flex justify-center items-center    ">Quick Access </h2>
+                        </div>
+                        <div class="flex flex-col gap-y-5 text-sm   bg-neutralcolor-100 rounded-14px p-4">
+                            <ul>@child </ul>
+                        </div>
+                    </div>
+                </layout>
+                <face filter="TypeID in(150 , 250) and text <> ''">
+                    <li class="py-3">
+                        <a href="#@valueID" class=" flex items-center gap-3">
+                            <span class="w-fit flex justify-center items-center">
+                                   <svg class="inline-block ml-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5999 14.79C17.5409 14.434 17.6599 14.071 17.9189 13.82L21.6589 10.28C21.9669 9.991 22.0799 9.551 21.9489 9.15C21.8099 8.75 21.4589 8.46 21.0389 8.4L16.0689 7.679C15.7099 7.624 15.3989 7.397 15.2389 7.07L13.0199 2.6C12.8469 2.264 12.5159 2.039 12.1399 2H11.7189L11.5489 2.07L11.4399 2.11C11.3799 2.145 11.3259 2.188 11.2789 2.24L11.1889 2.31C11.1079 2.388 11.0409 2.48 10.9889 2.58L8.79888 7.07C8.62888 7.41 8.29688 7.64 7.91888 7.679L2.94888 8.4C2.53588 8.465 2.19388 8.754 2.05988 9.15C1.92188 9.547 2.02688 9.987 2.32888 10.28L5.93988 13.78C6.19888 14.035 6.31788 14.4 6.25888 14.759L5.36888 19.679C5.27188 20.274 5.66688 20.838 6.25888 20.95C6.50188 20.989 6.74988 20.95 6.96888 20.84L11.3989 18.519C11.4829 18.473 11.5749 18.443 11.6689 18.429H11.9399C12.1149 18.434 12.2859 18.478 12.4399 18.56L16.8689 20.87C17.2419 21.07 17.6969 21.04 18.0389 20.79C18.3879 20.549 18.5639 20.127 18.4889 19.71L17.5999 14.79Z" fill="#FDB713" /></svg>
+                            </span>
+                     @text</a></li>
+                </face>
+            </basis>
+            <basis core="list" datamembername="db.related-article">
+                <layout>
+                    <div class="w-95per mr-auto mt-5">
+                        <div class="border-b-2 border-primary-600 w-full mb-3">
+                            <h2 class="h-12 w-fit px-4 leading-48px bg-primary-600 text-sm   flex justify-center items-center    ">
+                                
+                               Recommended Reads</h2>
+                        </div>
+                        <div class="flex flex-col gap-y-3">@child </div>
+                    </div>
+                </layout>
+                <face filter="link is null">
+                    <article class="w-403px max-xl:w-full h-136px rounded-xl hover:shadow-lg">
+                        <a href="/article.bc?lid=1&id=@id" class="w-full h-full flex justify-between ">
+                            <figure class="w-136px h-136px rounded-xl">
+                                <img loading="lazy" class="w-136px h-136px rounded-xl object-cover" src="[##cms.cms.cdn##]/@00136X00136prp" width="136" height="136" alt="@title"></figure>
+                            <div class="w-article-side px-4">
+                                <h2 class="text-base   my-2 line-clamp-1">@title</h2>
+                                <div class="text-sm   text-justify line-clamp-3">@prp_7244 </div>
+                            </div>
+                        </a>
+                    </article>
+                </face>
+                <face>
+                    <article class="w-403px max-xl:w-full h-136px rounded-xl hover:shadow-lg">
+                        <a href="/@link" class="w-full h-full flex justify-between ">
+                            <figure class="w-136px h-136px rounded-xl"><img loading="lazy" class="w-136px h-136px rounded-xl object-cover" src="[##cms.cms.cdn##]/@00136X00136prp" width="136" height="136" alt="@title"></figure>
+                            <div class="w-article-side px-4">
+                                <h2 class="text-base   my-2 line-clamp-1">@title</h2>
+                                <div class="text-sm   text-justify line-clamp-3">@prp_7244 </div>
+                            </div>
+                        </a>
+                    </article>
+                </face>
+            </basis>
+        </aside>
+        </div>
+        </div>
+        <basis core="list" datamembername="db.news">
+            <layout>
+                <section class="max-w-7xl mx-auto mt-12 w-95per mb-36">
+                    <h2 class="text-3xl font-bold text-neutralcolor-950 text-right">
+                       Magazine & News</h2>
+                    <div class="flex justify-between gap-2 mt-7  ">@child </div>
+                </section>
+            </layout>
+            <face filter="link is null">
+                <article class="w-420px h-422px rounded-xl overflow-hidden hover:shadow-md">
+                    <a href="/article.bc?id=@id">
+                        <figure class="rounded-xl overflow-hidden"><img loading="lazy" class="w-420px h-248px object-cover" src="[##cms.cms.cdn##]/@00420X00248prp" width="420" height="248" alt="@title"></figure>
+                        <div class="w-95per mx-auto">
+                            <h2 class="line-clamp-1 w-full my-5 text-lg">@title</h2>
+                            <div class="text-sm mt-4 text-justify line-clamp-4 ">@prp_7244</div>
+                        </div>
+                    </a>
+                </article>
+            </face>
+            <face>
+                <article class="w-420px h-422px rounded-xl overflow-hidden hover:shadow-md">
+                    <a href="/@link">
+                        <figure class="rounded-xl overflow-hidden"><img loading="lazy" class="w-420px h-248px object-cover" src="[##cms.cms.cdn##]/@00420X00248prp" width="420" height="248" alt="@title"></figure>
+                        <div class="w-95per mx-auto">
+                            <h2 class="line-clamp-1 w-full my-5 text-lg">@title</h2>
+                            <div class="text-sm mt-4 text-justify line-clamp-4 ">@prp_7244</div>
+                        </div>
+                    </a>
+                </article>
+            </face>
+        </basis>
+    </main>
+    <basis core="call" lid="2"  file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+    <script type="application/ld+json">
+        [##db.json.Column1##]
+    </script>
+</body>
+
+</html>

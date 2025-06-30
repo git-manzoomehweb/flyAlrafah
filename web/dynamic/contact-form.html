@@ -1,0 +1,87 @@
+<div id="contactform" class="free-form-container form-container mt-7">
+  <basis
+    core="schema"
+    run="atclient"
+    schemaurl="/schema/domainform/293F8D48-E31D-498D-8045-111D1FA77757/7BB11617-DC11-4E2B-8D0E-F6211A72CDFE/fa/contact-us"
+    displaymode="new"
+    button="[data-btn-upload]"
+    resultsourceid="upload.data"
+    onrendered="RenderForm"
+  ></basis>
+  <basis
+    core="api"
+    if="{##cms.upload.run|(false)##}"
+    run="atclient"
+    url="/schema/domainform/293F8D48-E31D-498D-8045-111D1FA77757/fa/editobject"
+    method="post"
+    body="object_edit={##cms.upload.value##}&captcha={##cms.upload.captcha##}&captchaid={##cms.upload.captchaid##}"
+    content-type="application/x-www-form-urlencoded"
+    triggers="cms.upload"
+    onprocessed="OnProcessedEditObject"
+  ></basis>
+  <div class="w-full flex items-center gap-4">
+    <div class="free-form-content flex w-full justify-center items-center">
+      <div
+        id="captchaContainer"
+        class="captchaContainerclass captcha-sefaresh"
+        data-bc-answer-container
+        data-bc-schema-info-multi="0"
+        data-bc-schema-info-word="58"
+        data-bc-schema-info-part="1"
+        data-bc-schema-info-part-0-type="text"
+      >
+        <basis
+          core="dbsource"
+          source="trust_login"
+          name="captcha"
+          run="atclient"
+          triggers="captcha.refresh"
+        >
+          <member name="code" type="scalar" request="captcha"></member>
+        </basis>
+        <basis
+          datamembername="captcha.code"
+          core="print"
+          run="atclient"
+          onrendered="captchaRendered"
+        >
+          <face>
+            <script type="text/template">
+               <div class="flex gap-2 ">
+                  <div class="w-1/3">
+                      <input type="text"  class="contactUsInput codeinputm" placeholder="کد امنیتی" name="captcha" maxlength="4" />
+                      <input type="hidden" name="captchaid" value="@captcha@" />
+                  </div>
+                      <div class="flex items-center">
+                      <svg class="cursor-pointer" width="35" height="25" onclick="refreshCaptcha()" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.6498 3.34999C12.0198 1.71999 9.70978 0.779992 7.16978 1.03999C3.49978 1.40999 0.479777 4.38999 0.0697772 8.05999C-0.480223 12.91 3.26978 17 7.99978 17C11.1898 17 13.9298 15.13 15.2098 12.44C15.5298 11.77 15.0498 11 14.3098 11C13.9398 11 13.5898 11.2 13.4298 11.53C12.2998 13.96 9.58978 15.5 6.62978 14.84C4.40978 14.35 2.61978 12.54 2.14978 10.32C1.30978 6.43999 4.25978 2.99999 7.99978 2.99999C9.65978 2.99999 11.1398 3.68999 12.2198 4.77999L10.7098 6.28999C10.0798 6.91999 10.5198 7.99999 11.4098 7.99999H14.9998C15.5498 7.99999 15.9998 7.54999 15.9998 6.99999V3.40999C15.9998 2.51999 14.9198 2.06999 14.2898 2.69999L13.6498 3.34999Z"
+                           fill="#FDB713" />
+                      </svg>
+                      <img src="/@captcha@" width="80" height="56" alt="captcha code" />
+                  </div>
+              </div>
+            </script>
+          </face>
+        </basis>
+      </div>
+    </div>
+    <div class="clear-both"></div>
+    <basis
+      core="callback"
+      run="atclient"
+      method="uploadDocument"
+      triggers="upload.data"
+    ></basis>
+    <div
+      class="text-center w-1/3 bg-primary-600 rounded-49 text-neutralcolor-950 sendform-btn hover:bg-primary-800 hover:text-white h-12 rounded-3xl leading-48px max-xl:mx-auto max-xl:w-full cursor-pointer"
+    >
+      <button class="data-body-btn w-full h-full" type="button" data-btn-upload>
+        <span>send</span>
+      </button>
+    </div>
+  </div>
+</div>
+<div
+  id="message-api"
+  class="message-api text-center text-black w-full block text-xs mt-3 font-danaregular"
+></div>

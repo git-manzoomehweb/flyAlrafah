@@ -1,0 +1,495 @@
+<basis core="group" if="'[##cms.query.typeid##]'='tour'">
+  <basis
+    core="dbsource"
+    source="basiscore"
+    lid="2"
+    mid="20"
+    name="db"
+    catid="[##cms.query.catid##]"
+    ><member
+      name="sp_tours"
+      type="list"
+      link="tour.bc"
+      size="314x227"
+      perpage="16"
+      pageno="[##cms.query.page|(1)##]"
+      propertyid="8181,8076,8077,10000502,10000503,10000504"
+      order="ord" /><member
+      name="paging"
+      type="list"
+      request="paging"
+      count="5"
+      parentname="sp_tours"
+  /></basis>
+  <basis
+    core="dbsource"
+    source="basiscore"
+    mid="1"
+    name="list"
+    lid="2"
+    schemaid="987"
+    term="[##cms.query.term##]"
+    ><member name="airline" type="list" request="spelist"
+  /></basis>
+  <basis core="inlinesource" name="joining"
+    ><member
+      name="list"
+      lefttblcol="db.sp_tours.prp_10000504"
+      righttblcol="list.airline.name"
+      format="join"
+      jointype="leftjoin"
+  /></basis>
+  <basis core="list" datamembername="joining.list">
+    <layout
+      ><div class="flex justify-start flex-wrap gap-y-8">@child</div></layout
+    >
+    <face filter="db.sp_tours.link is null and db.sp_tours.prp_8076 is null"
+      ><div class="w-1/4 flex justify-center max-xl:w-1/3">
+        <article
+          class="w-314px h-408px rounded-xl border border-neutralcolor-200 overflow-hidden hover:shadow-md"
+        >
+          <a
+            href="/tour.bc?id=@db.sp_tours.id&lid=1"
+            class="justify-between flex flex-col h-408px"
+            ><figure class="relative">
+              <img
+                class="w-314px h-227px object-cover"
+                loading="lazy"
+                src="[##cms.cms.cdn##]/@db.sp_tours.00314X00227prp"
+                width="314"
+                height="227"
+                alt="@db.sp_tours.title"
+              />
+            </figure>
+            <div class="w-full px-4">
+              <h2 class="line-clamp-1 w-full my-3 text-xl">
+                @db.sp_tours.title
+              </h2>
+              <div class="justify-between flex items-center mt-3">
+                <figure class="flex items-center" title="@list.airline.name">
+                  <img
+                    class="h-8 object-contain"
+                    src="@list.airline.pic"
+                    width="80"
+                    height="32"
+                    alt="@list.airline.name"
+                  />
+                  <figcaption
+                    class="text-sm font-danaregular text-neutralcolor-900 block h-12 leading-48px max-xl:hidden line-clamp-1"
+                  >
+                    @list.airline.name
+                  </figcaption>
+                </figure>
+                <div class="flex items-center">
+                  <span
+                    title="@db.sp_tours.prp_8077"
+                    class="text-sm text-neutralcolor-900 block h-12 leading-48px line-clamp-1"
+                    >@db.sp_tours.prp_8077 </span
+                  ><svg
+                    class="max-xl:hidden"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M28.4607 12C28.9796 11.9988 29.3899 12.3946 29.3911 12.9223L29.3923 13.8219C32.7591 14.081 34.9831 16.3334 34.9867 19.7877L35 29.8986C35.0048 33.6647 32.595 35.982 28.7322 35.988L19.2968 36C15.4581 36.0048 13.0181 33.6324 13.0133 29.8555L13 19.8633C12.9952 16.3862 15.1408 14.1397 18.5076 13.8363L18.5063 12.9367C18.5051 12.409 18.9034 12.012 19.4343 12.012C19.9653 12.0108 20.3635 12.4066 20.3647 12.9343L20.3659 13.7739L27.5339 13.7643L27.5327 12.9247C27.5315 12.397 27.9297 12.0012 28.4607 12ZM28.953 29.0303H28.941C28.3859 29.0435 27.9406 29.5004 27.9527 30.0522C27.9539 30.6039 28.4016 31.0585 28.9567 31.0704C29.5226 31.0692 29.9812 30.6123 29.98 30.0486C29.98 29.4848 29.5202 29.0303 28.953 29.0303ZM19.0096 29.0315C18.4545 29.0555 18.02 29.5124 18.0212 30.0642C18.0466 30.6159 18.5051 31.0477 19.0602 31.0225C19.6045 30.9985 20.0377 30.5415 20.0123 29.9898C20.0003 29.4501 19.5526 29.0303 19.0096 29.0315ZM23.9813 29.0255C23.4262 29.0507 22.993 29.5064 22.993 30.0582C23.0183 30.6099 23.4769 31.0405 24.032 31.0165C24.575 30.9913 25.0094 30.5355 24.9841 29.9826C24.972 29.4441 24.5243 29.0243 23.9813 29.0255ZM19.0035 24.7136C18.4484 24.7376 18.0152 25.1946 18.0164 25.7463C18.0405 26.298 18.5003 26.7298 19.0554 26.7046C19.5984 26.6806 20.0317 26.2237 20.0063 25.672C19.9942 25.1322 19.5478 24.7124 19.0035 24.7136ZM23.9765 24.6717C23.4214 24.6956 22.9869 25.1526 22.9882 25.7043C23.0123 26.2561 23.4721 26.6866 24.0272 26.6627C24.5702 26.6375 25.0034 26.1817 24.9793 25.63C24.966 25.0902 24.5195 24.6705 23.9765 24.6717ZM28.9482 24.6776C28.3931 24.6896 27.9587 25.1334 27.9599 25.6851V25.6983C27.972 26.2501 28.4305 26.6687 28.9868 26.6567C29.5299 26.6435 29.9631 26.1865 29.951 25.6348C29.9257 25.107 29.49 24.6765 28.9482 24.6776ZM27.5363 15.6114L20.3683 15.621L20.3695 16.5913C20.3695 17.1082 19.9725 17.516 19.4416 17.516C18.9106 17.5172 18.5112 17.1106 18.5112 16.5937L18.51 15.6702C16.1568 15.9016 14.8548 17.2594 14.8584 19.8609L14.8596 20.2339L33.1295 20.2099V19.7901C33.0777 17.2114 31.7599 15.8585 29.3947 15.657L29.3959 16.5805C29.3959 17.0963 28.9868 17.5052 28.4679 17.5052C27.937 17.5064 27.5375 17.0986 27.5375 16.5829L27.5363 15.6114Z"
+                      fill="#18181B"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-t border-neutralcolor-200 px-4 h-75px flex justify-between items-center"
+            >
+              <div
+                class="h-12 rounded-27px bg-primary-600 hover:bg-primary-700 w-24 text-center leading-48px"
+              >
+                جزئیات
+              </div>
+              <div class="text-left max-xl:w-full">
+                <div class="text-sm font-danaregular text-neutralcolor-600">
+                  بهای تور
+                </div>
+                <div class="text-xl text-neutralcolor-900 font-danaregular">
+                  @db.sp_tours.prp_8181
+                </div>
+              </div>
+            </div></a
+          >
+        </article>
+      </div></face
+    >
+    <face filter="db.sp_tours.prp_8076 is null"
+      ><div class="w-1/4 flex justify-center max-xl:w-1/3">
+        <article
+          class="w-314px h-408px rounded-xl border border-neutralcolor-200 overflow-hidden hover:shadow-md"
+        >
+          <a
+            href="/@db.sp_tours.link"
+            class="justify-between flex flex-col h-408px"
+            ><figure class="relative">
+              <img
+                class="w-314px h-227px object-cover"
+                loading="lazy"
+                src="[##cms.cms.cdn##]/@db.sp_tours.00314X00227prp"
+                width="314"
+                height="227"
+                alt="@db.sp_tours.title"
+              />
+            </figure>
+            <div class="w-full px-4">
+              <h2 class="line-clamp-1 w-full my-3 text-xl">
+                @db.sp_tours.title
+              </h2>
+              <div class="justify-between flex items-center mt-3">
+                <figure class="flex items-center" title="@list.airline.name">
+                  <img
+                    class="h-8 object-contain"
+                    src="@list.airline.pic"
+                    width="80"
+                    height="32"
+                    alt="@list.airline.name"
+                  />
+                  <figcaption
+                    class="text-sm font-danaregular text-neutralcolor-900 block h-12 leading-48px max-xl:hidden line-clamp-1"
+                  >
+                    @list.airline.name
+                  </figcaption>
+                </figure>
+                <div class="flex items-center">
+                  <span
+                    title="@db.sp_tours.prp_8077"
+                    class="text-sm text-neutralcolor-900 block h-12 leading-48px line-clamp-1"
+                    >@db.sp_tours.prp_8077 </span
+                  ><svg
+                    class="max-xl:hidden"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M28.4607 12C28.9796 11.9988 29.3899 12.3946 29.3911 12.9223L29.3923 13.8219C32.7591 14.081 34.9831 16.3334 34.9867 19.7877L35 29.8986C35.0048 33.6647 32.595 35.982 28.7322 35.988L19.2968 36C15.4581 36.0048 13.0181 33.6324 13.0133 29.8555L13 19.8633C12.9952 16.3862 15.1408 14.1397 18.5076 13.8363L18.5063 12.9367C18.5051 12.409 18.9034 12.012 19.4343 12.012C19.9653 12.0108 20.3635 12.4066 20.3647 12.9343L20.3659 13.7739L27.5339 13.7643L27.5327 12.9247C27.5315 12.397 27.9297 12.0012 28.4607 12ZM28.953 29.0303H28.941C28.3859 29.0435 27.9406 29.5004 27.9527 30.0522C27.9539 30.6039 28.4016 31.0585 28.9567 31.0704C29.5226 31.0692 29.9812 30.6123 29.98 30.0486C29.98 29.4848 29.5202 29.0303 28.953 29.0303ZM19.0096 29.0315C18.4545 29.0555 18.02 29.5124 18.0212 30.0642C18.0466 30.6159 18.5051 31.0477 19.0602 31.0225C19.6045 30.9985 20.0377 30.5415 20.0123 29.9898C20.0003 29.4501 19.5526 29.0303 19.0096 29.0315ZM23.9813 29.0255C23.4262 29.0507 22.993 29.5064 22.993 30.0582C23.0183 30.6099 23.4769 31.0405 24.032 31.0165C24.575 30.9913 25.0094 30.5355 24.9841 29.9826C24.972 29.4441 24.5243 29.0243 23.9813 29.0255ZM19.0035 24.7136C18.4484 24.7376 18.0152 25.1946 18.0164 25.7463C18.0405 26.298 18.5003 26.7298 19.0554 26.7046C19.5984 26.6806 20.0317 26.2237 20.0063 25.672C19.9942 25.1322 19.5478 24.7124 19.0035 24.7136ZM23.9765 24.6717C23.4214 24.6956 22.9869 25.1526 22.9882 25.7043C23.0123 26.2561 23.4721 26.6866 24.0272 26.6627C24.5702 26.6375 25.0034 26.1817 24.9793 25.63C24.966 25.0902 24.5195 24.6705 23.9765 24.6717ZM28.9482 24.6776C28.3931 24.6896 27.9587 25.1334 27.9599 25.6851V25.6983C27.972 26.2501 28.4305 26.6687 28.9868 26.6567C29.5299 26.6435 29.9631 26.1865 29.951 25.6348C29.9257 25.107 29.49 24.6765 28.9482 24.6776ZM27.5363 15.6114L20.3683 15.621L20.3695 16.5913C20.3695 17.1082 19.9725 17.516 19.4416 17.516C18.9106 17.5172 18.5112 17.1106 18.5112 16.5937L18.51 15.6702C16.1568 15.9016 14.8548 17.2594 14.8584 19.8609L14.8596 20.2339L33.1295 20.2099V19.7901C33.0777 17.2114 31.7599 15.8585 29.3947 15.657L29.3959 16.5805C29.3959 17.0963 28.9868 17.5052 28.4679 17.5052C27.937 17.5064 27.5375 17.0986 27.5375 16.5829L27.5363 15.6114Z"
+                      fill="#18181B"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-t border-neutralcolor-200 px-4 h-75px flex justify-between items-center"
+            >
+              <div
+                class="h-12 rounded-27px bg-primary-600 hover:bg-primary-700 w-24 text-center leading-48px"
+              >
+                جزئیات
+              </div>
+              <div class="text-left max-xl:w-full">
+                <div class="text-sm font-danaregular text-neutralcolor-600">
+                  بهای تور
+                </div>
+                <div class="text-xl text-neutralcolor-900 font-danaregular">
+                  @db.sp_tours.prp_8181
+                </div>
+              </div>
+            </div></a
+          >
+        </article>
+      </div></face
+    >
+    <face filter="db.sp_tours.link is null"
+      ><div class="w-1/4 flex justify-center max-xl:w-1/3">
+        <article
+          class="w-314px h-408px rounded-xl border border-neutralcolor-200 overflow-hidden hover:shadow-md"
+        >
+          <a
+            href="/tour.bc?id=@db.sp_tours.id&lid=1"
+            class="justify-between flex flex-col h-408px"
+            ><figure class="relative">
+              <img
+                class="w-314px h-227px object-cover"
+                loading="lazy"
+                src="[##cms.cms.cdn##]/@db.sp_tours.00314X00227prp"
+                width="314"
+                height="227"
+                alt="@db.sp_tours.title"
+              />
+              <figcaption
+                class="bg-white/50 text-neutralcolor-900 text-sm font-danaregular py-1 px-3 rounded-3xl absolute left-0 right-0 top-5 mx-auto w-fit"
+              >
+                @db.sp_tours.prp_8076
+              </figcaption>
+            </figure>
+            <div class="w-full px-4">
+              <h2 class="line-clamp-1 w-full my-3 text-xl">
+                @db.sp_tours.title
+              </h2>
+              <div class="justify-between flex items-center mt-3">
+                <figure class="flex items-center" title="@list.airline.name">
+                  <img
+                    class="h-8 object-contain"
+                    src="@list.airline.pic"
+                    width="80"
+                    height="32"
+                    alt="@list.airline.name"
+                  />
+                  <figcaption
+                    class="text-sm font-danaregular text-neutralcolor-900 block h-12 leading-48px max-xl:hidden line-clamp-1"
+                  >
+                    @list.airline.name
+                  </figcaption>
+                </figure>
+                <div class="flex items-center">
+                  <span
+                    title="@db.sp_tours.prp_8077"
+                    class="text-sm text-neutralcolor-900 block h-12 leading-48px line-clamp-1"
+                    >@db.sp_tours.prp_8077 </span
+                  ><svg
+                    class="max-xl:hidden"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M28.4607 12C28.9796 11.9988 29.3899 12.3946 29.3911 12.9223L29.3923 13.8219C32.7591 14.081 34.9831 16.3334 34.9867 19.7877L35 29.8986C35.0048 33.6647 32.595 35.982 28.7322 35.988L19.2968 36C15.4581 36.0048 13.0181 33.6324 13.0133 29.8555L13 19.8633C12.9952 16.3862 15.1408 14.1397 18.5076 13.8363L18.5063 12.9367C18.5051 12.409 18.9034 12.012 19.4343 12.012C19.9653 12.0108 20.3635 12.4066 20.3647 12.9343L20.3659 13.7739L27.5339 13.7643L27.5327 12.9247C27.5315 12.397 27.9297 12.0012 28.4607 12ZM28.953 29.0303H28.941C28.3859 29.0435 27.9406 29.5004 27.9527 30.0522C27.9539 30.6039 28.4016 31.0585 28.9567 31.0704C29.5226 31.0692 29.9812 30.6123 29.98 30.0486C29.98 29.4848 29.5202 29.0303 28.953 29.0303ZM19.0096 29.0315C18.4545 29.0555 18.02 29.5124 18.0212 30.0642C18.0466 30.6159 18.5051 31.0477 19.0602 31.0225C19.6045 30.9985 20.0377 30.5415 20.0123 29.9898C20.0003 29.4501 19.5526 29.0303 19.0096 29.0315ZM23.9813 29.0255C23.4262 29.0507 22.993 29.5064 22.993 30.0582C23.0183 30.6099 23.4769 31.0405 24.032 31.0165C24.575 30.9913 25.0094 30.5355 24.9841 29.9826C24.972 29.4441 24.5243 29.0243 23.9813 29.0255ZM19.0035 24.7136C18.4484 24.7376 18.0152 25.1946 18.0164 25.7463C18.0405 26.298 18.5003 26.7298 19.0554 26.7046C19.5984 26.6806 20.0317 26.2237 20.0063 25.672C19.9942 25.1322 19.5478 24.7124 19.0035 24.7136ZM23.9765 24.6717C23.4214 24.6956 22.9869 25.1526 22.9882 25.7043C23.0123 26.2561 23.4721 26.6866 24.0272 26.6627C24.5702 26.6375 25.0034 26.1817 24.9793 25.63C24.966 25.0902 24.5195 24.6705 23.9765 24.6717ZM28.9482 24.6776C28.3931 24.6896 27.9587 25.1334 27.9599 25.6851V25.6983C27.972 26.2501 28.4305 26.6687 28.9868 26.6567C29.5299 26.6435 29.9631 26.1865 29.951 25.6348C29.9257 25.107 29.49 24.6765 28.9482 24.6776ZM27.5363 15.6114L20.3683 15.621L20.3695 16.5913C20.3695 17.1082 19.9725 17.516 19.4416 17.516C18.9106 17.5172 18.5112 17.1106 18.5112 16.5937L18.51 15.6702C16.1568 15.9016 14.8548 17.2594 14.8584 19.8609L14.8596 20.2339L33.1295 20.2099V19.7901C33.0777 17.2114 31.7599 15.8585 29.3947 15.657L29.3959 16.5805C29.3959 17.0963 28.9868 17.5052 28.4679 17.5052C27.937 17.5064 27.5375 17.0986 27.5375 16.5829L27.5363 15.6114Z"
+                      fill="#18181B"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-t border-neutralcolor-200 px-4 h-75px flex justify-between items-center"
+            >
+              <div
+                class="h-12 rounded-27px bg-primary-600 hover:bg-primary-700 w-24 text-center leading-48px"
+              >
+                جزئیات
+              </div>
+              <div class="text-left max-xl:w-full">
+                <div class="text-sm font-danaregular text-neutralcolor-600">
+                  بهای تور
+                </div>
+                <div class="text-xl text-neutralcolor-900 font-danaregular">
+                  @db.sp_tours.prp_8181
+                </div>
+              </div>
+            </div></a
+          >
+        </article>
+      </div></face
+    >
+    <face
+      ><div class="w-1/4 flex justify-center max-xl:w-1/3">
+        <article
+          class="w-314px h-408px rounded-xl border border-neutralcolor-200 overflow-hidden hover:shadow-md"
+        >
+          <a
+            href="/@db.sp_tours.link"
+            class="justify-between flex flex-col h-408px"
+            ><figure class="relative">
+              <img
+                class="w-314px h-227px object-cover"
+                loading="lazy"
+                src="[##cms.cms.cdn##]/@db.sp_tours.00314X00227prp"
+                width="314"
+                height="227"
+                alt="@db.sp_tours.title"
+              />
+              <figcaption
+                class="bg-white/50 text-neutralcolor-900 text-sm font-danaregular py-1 px-3 rounded-3xl absolute left-0 right-0 top-5 mx-auto w-fit"
+              >
+                @db.sp_tours.prp_8076
+              </figcaption>
+            </figure>
+            <div class="w-full px-4">
+              <h2 class="line-clamp-1 w-full my-3 text-xl">
+                @db.sp_tours.title
+              </h2>
+              <div class="justify-between flex items-center mt-3">
+                <figure class="flex items-center" title="@list.airline.name">
+                  <img
+                    class="h-8 object-contain"
+                    src="@list.airline.pic"
+                    width="80"
+                    height="32"
+                    alt="@list.airline.name"
+                  />
+                  <figcaption
+                    class="text-sm font-danaregular text-neutralcolor-900 block h-12 leading-48px max-xl:hidden line-clamp-1"
+                  >
+                    @list.airline.name
+                  </figcaption>
+                </figure>
+                <div class="flex items-center">
+                  <span
+                    title="@db.sp_tours.prp_8077"
+                    class="text-sm text-neutralcolor-900 block h-12 leading-48px line-clamp-1"
+                    >@db.sp_tours.prp_8077 </span
+                  ><svg
+                    class="max-xl:hidden"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M28.4607 12C28.9796 11.9988 29.3899 12.3946 29.3911 12.9223L29.3923 13.8219C32.7591 14.081 34.9831 16.3334 34.9867 19.7877L35 29.8986C35.0048 33.6647 32.595 35.982 28.7322 35.988L19.2968 36C15.4581 36.0048 13.0181 33.6324 13.0133 29.8555L13 19.8633C12.9952 16.3862 15.1408 14.1397 18.5076 13.8363L18.5063 12.9367C18.5051 12.409 18.9034 12.012 19.4343 12.012C19.9653 12.0108 20.3635 12.4066 20.3647 12.9343L20.3659 13.7739L27.5339 13.7643L27.5327 12.9247C27.5315 12.397 27.9297 12.0012 28.4607 12ZM28.953 29.0303H28.941C28.3859 29.0435 27.9406 29.5004 27.9527 30.0522C27.9539 30.6039 28.4016 31.0585 28.9567 31.0704C29.5226 31.0692 29.9812 30.6123 29.98 30.0486C29.98 29.4848 29.5202 29.0303 28.953 29.0303ZM19.0096 29.0315C18.4545 29.0555 18.02 29.5124 18.0212 30.0642C18.0466 30.6159 18.5051 31.0477 19.0602 31.0225C19.6045 30.9985 20.0377 30.5415 20.0123 29.9898C20.0003 29.4501 19.5526 29.0303 19.0096 29.0315ZM23.9813 29.0255C23.4262 29.0507 22.993 29.5064 22.993 30.0582C23.0183 30.6099 23.4769 31.0405 24.032 31.0165C24.575 30.9913 25.0094 30.5355 24.9841 29.9826C24.972 29.4441 24.5243 29.0243 23.9813 29.0255ZM19.0035 24.7136C18.4484 24.7376 18.0152 25.1946 18.0164 25.7463C18.0405 26.298 18.5003 26.7298 19.0554 26.7046C19.5984 26.6806 20.0317 26.2237 20.0063 25.672C19.9942 25.1322 19.5478 24.7124 19.0035 24.7136ZM23.9765 24.6717C23.4214 24.6956 22.9869 25.1526 22.9882 25.7043C23.0123 26.2561 23.4721 26.6866 24.0272 26.6627C24.5702 26.6375 25.0034 26.1817 24.9793 25.63C24.966 25.0902 24.5195 24.6705 23.9765 24.6717ZM28.9482 24.6776C28.3931 24.6896 27.9587 25.1334 27.9599 25.6851V25.6983C27.972 26.2501 28.4305 26.6687 28.9868 26.6567C29.5299 26.6435 29.9631 26.1865 29.951 25.6348C29.9257 25.107 29.49 24.6765 28.9482 24.6776ZM27.5363 15.6114L20.3683 15.621L20.3695 16.5913C20.3695 17.1082 19.9725 17.516 19.4416 17.516C18.9106 17.5172 18.5112 17.1106 18.5112 16.5937L18.51 15.6702C16.1568 15.9016 14.8548 17.2594 14.8584 19.8609L14.8596 20.2339L33.1295 20.2099V19.7901C33.0777 17.2114 31.7599 15.8585 29.3947 15.657L29.3959 16.5805C29.3959 17.0963 28.9868 17.5052 28.4679 17.5052C27.937 17.5064 27.5375 17.0986 27.5375 16.5829L27.5363 15.6114Z"
+                      fill="#18181B"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div
+              class="border-t border-neutralcolor-200 px-4 h-75px flex justify-between items-center"
+            >
+              <div
+                class="h-12 rounded-27px bg-primary-600 hover:bg-primary-700 w-24 text-center leading-48px"
+              >
+                جزئیات
+              </div>
+              <div class="text-left max-xl:w-full">
+                <div class="text-sm font-danaregular text-neutralcolor-600">
+                  بهای تور
+                </div>
+                <div class="text-xl text-neutralcolor-900 font-danaregular">
+                  @db.sp_tours.prp_8181
+                </div>
+              </div>
+            </div></a
+          >
+        </article>
+      </div></face
+    >
+  </basis>
+  <div id="paging" class="clear-both w-full my-10 text-center">
+    <basis core="print" datamembername="db.paging"
+      ><face filter="sta='pre'"
+        ><a
+          class="prev-page arrow-page inline-block w-10 h-10 leading-10 align-middle mx-4 border border-neutral-300 text-neutralcolor-300 text-base text-center cursor-pointer hover:text-primary"
+          href="/load-items.bc?typeid=tour&catid=[##cms.query.catid##]&type=1&page=@page"
+          data-page="@page"
+          ><i class="fa fa-arrow-right"></i></a></face
+    ></basis>
+    <basis core="print" datamembername="db.paging"
+      ><face filter="sta='no' and page=1 and MAX(RowNumber)>1"
+        ><a
+          href="/load-items.bc?typeid=tour&catid=[##cms.query.catid##]&type=1&page=@page"
+          class="page-no active-page inline-block w-10 h-10 leading-10 mx-1 border border-neutral-300 text-neutralcolor-300 text-base text-center cursor-pointer hover:text-primary"
+          data-page="@page"
+          >@page</a
+        ></face
+      ><face filter="sta='no' and page>1 and MAX(RowNumber)>1"
+        ><a
+          href="/load-items.bc?typeid=tour&catid=[##cms.query.catid##]&type=1&page=@page"
+          class="page-no inline-block w-10 h-10 leading-10 mx-1 border border-neutral-300 text-neutralcolor-300 text-base text-center cursor-pointer hover:text-primary"
+          data-page="@page"
+          >@page</a
+        ></face
+      ></basis
+    >
+    <basis core="print" datamembername="db.paging"
+      ><face filter="sta='nex'"
+        ><a
+          class="next-page arrow-page inline-block w-10 h-10 leading-10 align-middle mx-4 border border-neutral-300 text-neutralcolor-300 text-base text-center cursor-pointer hover:text-primary"
+          href="/load-items.bc?typeid=tour&catid=[##cms.query.catid##]&type=1&page=@page"
+          data-page="@page"
+          ><i class="fa fa-arrow-left"></i></a></face
+    ></basis>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let rownumber = "[##db.paging.RowNumber##]";
+      if (rownumber <= 1) {
+        document.querySelector("#paging .prev-page").style.display = "none";
+        document.querySelector("#paging .next-page").style.display = "none";
+      }
+    });
+    document.addEventListener("click", function (e) {
+      if (e.target.closest(".page-no")) {
+        e.preventDefault();
+        let pageElement = e.target.closest(".page-no");
+        let page = parseInt(pageElement.getAttribute("data-page"));
+        let url = pageElement.getAttribute("href");
+        fetch(url)
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (data) {
+            document.querySelector(".load-tour-list").innerHTML = data;
+            document.querySelectorAll(".page-no").forEach(function (element) {
+              element.classList.remove("active-page");
+              let currentPage = parseInt(element.getAttribute("data-page"));
+              if (currentPage === page) {
+                element.classList.add("active-page");
+              }
+            });
+          });
+      }
+      if (e.target.closest(".arrow-page")) {
+        e.preventDefault();
+        let button = e.target.closest(".arrow-page");
+        let url = button.getAttribute("href");
+        let activePageElement = document.querySelector("#paging .active-page");
+        let activePage = parseInt(activePageElement.getAttribute("data-page"));
+        fetch(url)
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (data) {
+            document.querySelector(".load-tour-list").innerHTML = data;
+            let prevPage = activePage - 1;
+            if (prevPage < 1) {
+              document.querySelector(".prev-page").style.display = "none";
+            } else {
+              let prevPageElement = document.querySelector(".prev-page");
+              prevPageElement.setAttribute(
+                "href",
+                `/load-items.bc?typeid=tour&catid=[##cms.query.catid##]&page=${prevPage}`
+              );
+              prevPageElement.setAttribute("data-page", prevPage);
+              prevPageElement.style.display = "";
+            }
+            let nextPage = activePage + 1;
+            let maxPage = parseInt("[##db.paging.MaxPage##]");
+            if (nextPage > maxPage) {
+              document.querySelector(".next-page").style.display = "none";
+            } else {
+              let nextPageElement = document.querySelector(".next-page");
+              nextPageElement.setAttribute(
+                "href",
+                `/load-items.bc?typeid=tour&catid=[##cms.query.catid##]&page=${nextPage}`
+              );
+              nextPageElement.setAttribute("data-page", nextPage);
+              nextPageElement.style.display = "";
+            }
+            document.querySelectorAll(".page-no").forEach(function (element) {
+              element.classList.remove("active-page");
+              if (
+                parseInt(element.getAttribute("data-page")) === nextPage ||
+                prevPage
+              ) {
+                element.classList.add("active-page");
+              }
+            });
+          });
+      }
+    });
+  </script>
+</basis>

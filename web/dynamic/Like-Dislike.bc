@@ -1,0 +1,12 @@
+<basis core="call" file="Client_CheckRkey.inc"></basis>
+
+<basis core="group" if="'[##cms.query.type##]'='like'">
+<basis core="dbsource" source="userbehavior" name="basisName" usedforid="[##cms.query.id##]" mid="46" userid="[##db.checkrkey.userid|(0)##]" >
+	<member request="likesave" type="scalar" name="like" format="like" preview="true" />
+</basis>
+</basis>
+<basis core="group" if="'[##cms.query.type##]'='dislike'">
+<basis core="dbsource" source="userbehavior" name="basisName" usedforid="[##cms.query.id##]" mid="46" userid="[##db.checkrkey.userid|(0)##]" >
+	<member request="likesave" type="scalar" name="dislike" format="dislike" preview="true" />
+</basis>
+</basis>

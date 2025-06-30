@@ -1,0 +1,849 @@
+<basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+  <member type="list" name="list" request="taglist" preview=""></member>
+</basis>
+
+<basis
+  core="dbsource"
+  source="basiscore"
+  lid="1"
+  mid="1"
+  name="db"
+  catid="[##cms.query.catid##]"
+>
+  <member
+    name="article-list"
+    type="list"
+    link="article.bc"
+    propertyid="7244,7248,3087429"
+    size="673x351"
+    order="ord"
+    postsql="select * from [db.article-list] LIMIT 1"
+  />
+  <member
+    name="article-list2"
+    type="list"
+    link="article.bc"
+    perpage="5"
+    propertyid="7244,7248,3087429"
+    size="379x209"
+    order="ord"
+  />
+  <member
+    name="paging"
+    type="list"
+    request="paging"
+    count="5"
+    parentname="article-list2"
+  />
+</basis>
+
+<basis
+  core="dbsource"
+  source="basiscore"
+  lid="1"
+  mid="1"
+  name="db"
+  catid="[##cms.query.nid##]"
+>
+  <member
+    name="another-news-list"
+    type="list"
+    link="article.bc"
+    propertyid="7244"
+    perpage="6"
+    size="84x84"
+    order="ord"
+  />
+</basis>
+
+<basis
+  core="dbsource"
+  source="basiscore"
+  lid="1"
+  mid="1"
+  name="db"
+  catid="[##cms.query.catid##]"
+>
+  <member
+    name="navigation"
+    type="tree"
+    request="navcatid"
+    parentid="[##cms.query.catid##]"
+  />
+</basis>
+
+<basis
+  core="dbsource"
+  source="basiscore"
+  lid="1"
+  mid="1"
+  name="db"
+  catid="212484"
+>
+  <member
+    name="soon-list"
+    type="list"
+    propertyid=" 3087422 , 3087423 , 3087424 , 3087425 , 7244 ,3087428"
+    typeid="159"
+    order="ord"
+    size="1280x257"
+  />
+</basis>
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover"
+    />
+    <title>
+      [##cms.seo.title|(شرکت خدمات مسافرت هوایی و گردشگری فراز گشت)##]
+    </title>
+    <meta
+      name="description"
+      content="[##cms.seo.description|(شرکت خدمات مسافرت هوایی و گردشگری  فراز گشت)##]"
+    />
+    <basis
+      core="dbsource"
+      source="hosting"
+      name="tag"
+      urlid="[##cms.seo.urlid##]"
+    >
+      <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+      <face filter="key = 'canonical'">
+        <link rel="canonical" href="@value" />
+      </face>
+      <face>
+        <meta property="@key" content="@value" />
+      </face>
+    </basis>
+    <basis core="call" file="pwa.inc" />
+    <basis core="call" file="style.inc" />
+  </head>
+
+  <body class="relative">
+    <basis core="call" file="header.inc" />
+    <main class="w-full z-10 flex-flex-col gap-0 mb-8">
+      <section
+        class="overflow-hidden object-cover relative h-[620px] lg:h-[669px] w-full"
+      >
+        <span
+          class="z-10 w-full h-full absolute top-0 bg-gradient-to-b from-special-1"
+        ></span>
+        <img
+          loading="lazy"
+          class="!w-full object-cover z-0 !h-full lg:block hidden"
+          src="[##cms.cms.cdn##]/images/news-list.jpg"
+          alt="search"
+        />
+        <img
+          loading="lazy"
+          class="!w-full z-0 !h-full lg:hidden block object-cover"
+          src="[##cms.cms.cdn##]/images/news-list.jpg"
+          alt="search"
+        />
+        <img
+          loading="lazy"
+          class="absolute z-20 lg:block hidden -bottom-32 object-cover"
+          src="[##cms.cms.cdn##]/images/cloud.png"
+          alt="cloud"
+        />
+        <img
+          loading="lazy"
+          class="absolute z-20 lg:hidden block left-0 w-full -bottom-28 h-[280px]"
+          src="[##cms.cms.cdn##]/images/cloud.png"
+          alt="cloud"
+        />
+      </section>
+      <section class="flex z-20 w-full justify-center absolute top-[370px]">
+        <div
+          class="w-full lg:w-[1024px] xl:w-[1200px] 2xl:w-[1280px] flex flex-col gap-4"
+        >
+          <div class="w-full flex justify-between items-center">
+            <div class="flex flex-col gap-4">
+              <ul
+                itemscope
+                itemtype="https://schema.org/BreadcrumbList"
+                class="flex gap-1 !text-sm"
+              >
+                <li
+                  class="inline-block text-zinc-600 hover:text-primary-100"
+                  itemprop="itemListElement"
+                  itemscope
+                  itemtype="https://schema.org/ListItem"
+                >
+                  <a
+                    class="text-zinc-600 hover:text-primary-100"
+                    itemprop="item"
+                    href="/"
+                    aria-label="home"
+                    ><span itemprop="name">صفحه اصلی</span>
+                    <meta itemprop="position" content="1" />
+                  </a>
+                </li>
+                <span class="text-zinc-600">/</span>
+                <basis core="print" datamembername="db.navigation">
+                  <face
+                    filter="RowNumber=max(RowNumber) and parentcatid<>211406"
+                  >
+                    <li
+                      class="inline-block text-zinc-900"
+                      itemprop="itemListElement"
+                      itemscope
+                      itemtype="https://schema.org/ListItem"
+                    >
+                      <span itemprop="name">@title</span>
+                      <meta itemprop="position" content="@rownumber" />
+                    </li>
+                  </face>
+                  <face filter="link is null and parentcatid<>211406">
+                    <li
+                      class="flex gap-1 text-zinc-600"
+                      itemprop="itemListElement"
+                      itemscope
+                      itemtype="https://schema.org/ListItem"
+                    >
+                      <a
+                        class="text-zinc-600 hover:text-primary-100"
+                        itemprop="item"
+                        href="/article-list.bc?catid=@parentcatid"
+                        aria-label="@title"
+                        ><span itemprop="name">@title</span>
+                        <meta itemprop="position" content="@rownumber" />
+                      </a>
+                      <span class="text-zinc-600">/</span>
+                    </li>
+                  </face>
+                  <face filter="parentcatid<>211406">
+                    <li
+                      class="flex gap-1 text-sm text-zinc-600 font-normal"
+                      itemprop="itemListElement"
+                      itemscope
+                      itemtype="https://schema.org/ListItem"
+                    >
+                      <a
+                        class="text-zinc-600 hover:text-primary-100"
+                        itemprop="item"
+                        href="@link"
+                        aria-label="@title"
+                        ><span class="text-zinc-900" itemprop="name"
+                          >@title</span
+                        >
+                        <meta itemprop="position" content="@rownumber" />
+                      </a>
+                      <span class="text-zinc-600">/</span>
+                    </li>
+                  </face>
+                </basis>
+              </ul>
+
+              <h1 class="text-zinc-900 text-[30px] font-bold">مجله گردشگری</h1>
+            </div>
+            <form
+              action="/search-content.bc"
+              method="get"
+              class="bg-white px-4 py-2 rounded-lg flex justify-between w-[300px]"
+            >
+              <input
+                class="!bg-transparent text-zinc-900 placeholder:text-zinc-900 !border-0 !outline-none focus:!border-0 focus:!outline-none"
+                type="text"
+                placeholder="جستجوی مقاله"
+                name="search-content-name"
+              />
+              <button class="!bg-transparent border-none" type="submit">
+                <svg
+                  width="48"
+                  height="49"
+                  viewBox="0 0 48 49"
+                  fill="none"
+                  class="group"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M16 23.9171C16 20.0362 19.158 16.8792 23.039 16.8792C26.919 16.8792 30.077 20.0362 30.077 23.9171C30.077 27.7981 26.919 30.9561 23.039 30.9561C19.158 30.9561 16 27.7981 16 23.9171ZM34.495 34.3761L29.896 29.7891C31.252 28.2081 32.077 26.1591 32.077 23.9171C32.077 18.9342 28.022 14.8792 23.039 14.8792C18.055 14.8792 14 18.9342 14 23.9171C14 28.9011 18.055 32.9561 23.039 32.9561C25.061 32.9561 26.924 32.2801 28.431 31.1531L33.083 35.7921L34.495 34.3761Z"
+                    fill="#18181B"
+                    class="group-hover:fill-primary-600"
+                  />
+                </svg>
+              </button>
+            </form>
+          </div>
+          <basis core="list" datamembername="db.article-list">
+            <face  filter="link is null and [prp_3087429] is null">
+              <div
+                class="w-full rounded-lg bg-zinc-100 h-[351px] flex justify-between overflow-hidden"
+              >
+                <div class="w-[50%] flex flex-col gap-5 px-6 py-11">
+                  <h2 class="font-bold text-base">@title</h2>
+                  <p class="font-normal text-sm text-zinc-900 line-clamp-5">
+                    @prp_7244
+                  </p>
+                  <div class="flex gap-4 items-center">
+                    <img
+                      loading="lazy"
+                      src="[##cms.cms.cdn##]/images/Calendar.png"
+                      alt="Calendar"
+                      class="w-6 h-6"
+                    />
+                    <p class="text-zinc-500 text-sm leading-6">@date</p>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex items-center gap-3">
+                      <img
+                        loading="lazy"
+                        class="rounded-full"
+                        width="40"
+                        height="40"
+                        src="[##cms.cms.cdn##]/images/person.png"
+                        alt="@prp_7248"
+                      />
+                      <p class="text-zinc-500 text-sm">نویسنده : @prp_7248</p>
+                    </div>
+                    <a
+                      class="bg-primary-700 rounded text-sm text-white px-3 py-2 hover:bg-primary-950 transition-all duration-200 ease-in-out"
+                      href="/article.bc?id=@id">ادامه مطلب</a>
+                  </div>
+                </div>
+                <div class="w-[50%]">
+                  <img
+                    loading="lazy"
+                    class="!w-full !h-full object-cover"
+                    src="@00673X00351prp"
+                    alt="@title"
+                    width="673"
+                    height="351"
+                  />
+                </div>
+              </div>
+            </face>
+            <face filter="[prp_3087429] is null">
+                <div
+                class="w-full rounded-lg bg-zinc-100 h-[351px] flex justify-between overflow-hidden"
+              >
+                <div class="w-[50%] flex flex-col gap-5 px-6 py-11">
+                  <h2 class="font-bold text-base">@title</h2>
+                  <p class="font-normal text-sm text-zinc-900 line-clamp-5">
+                    @prp_7244
+                  </p>
+                  <div class="flex gap-4 items-center">
+                    <img
+                      loading="lazy"
+                      src="[##cms.cms.cdn##]/images/Calendar.png"
+                      alt="Calendar"
+                      class="w-6 h-6"
+                    />
+                    <p class="text-zinc-500 text-sm leading-6">@date</p>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex items-center gap-3">
+                      <img
+                        loading="lazy"
+                        class="rounded-full"
+                        width="40"
+                        height="40"
+                        src="[##cms.cms.cdn##]/images/person.png"
+                        alt="@prp_7248"
+                      />
+                      <p class="text-zinc-500 text-sm">نویسنده : @prp_7248</p>
+                    </div>
+                    <a
+                      class="bg-primary-700 rounded text-sm text-white px-3 py-2 hover:bg-primary-950 transition-all duration-200 ease-in-out"
+                      href="@link">ادامه مطلب</a>
+                  </div>
+                </div>
+                <div class="w-[50%]">
+                  <img
+                    loading="lazy"
+                    class="!w-full !h-full object-cover"
+                    src="@00673X00351prp"
+                    alt="@title"
+                    width="673"
+                    height="351"
+                  />
+                </div>
+              </div>
+            </face>
+            <face filter="link is null">
+              <div
+                class="w-full rounded-lg bg-zinc-100 h-[351px] flex justify-between overflow-hidden"
+              >
+                <div class="w-[50%] flex flex-col gap-5 px-6 py-11">
+                  <h2 class="font-bold text-base">@title</h2>
+                  <p class="font-normal text-sm text-zinc-900 line-clamp-5">
+                    @prp_7244
+                  </p>
+                  <div class="flex gap-4 items-center">
+                    <img
+                      loading="lazy"
+                      src="[##cms.cms.cdn##]/images/Calendar.png"
+                      alt="Calendar"
+                      class="w-6 h-6"
+                    />
+                    <p class="text-zinc-500 text-sm leading-6">@date</p>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex items-center gap-3">
+                      <img
+                        loading="lazy"
+                        class="rounded-full"
+                        width="40"
+                        height="40"
+                        src="@prp_3087429"
+                        alt="@prp_7248"
+                      />
+                      <p class="text-zinc-500 text-sm">نویسنده : @prp_7248</p>
+                    </div>
+                    <a
+                      class="bg-primary-700 rounded text-sm text-white px-3 py-2 hover:bg-primary-950 transition-all duration-200 ease-in-out"
+                      href="/article.bc?id=@id"
+                      >ادامه مطلب</a
+                    >
+                  </div>
+                </div>
+                <div class="w-[50%]">
+                  <img
+                    loading="lazy"
+                    class="!w-full !h-full object-cover"
+                    src="@00673X00351prp"
+                    alt="@title"
+                    width="673"
+                    height="351"
+                  />
+                </div>
+              </div>
+            </face>
+            <face>
+                <div
+                class="w-full rounded-lg bg-zinc-100 h-[351px] flex justify-between overflow-hidden"
+              >
+                <div class="w-[50%] flex flex-col gap-5 px-6 py-11">
+                  <h2 class="font-bold text-base">@title</h2>
+                  <p class="font-normal text-sm text-zinc-900 line-clamp-5">
+                    @prp_7244
+                  </p>
+                  <div class="flex gap-4 items-center">
+                    <img
+                      loading="lazy"
+                      src="[##cms.cms.cdn##]/images/Calendar.png"
+                      alt="Calendar"
+                      class="w-6 h-6"
+                    />
+                    <p class="text-zinc-500 text-sm leading-6">@date</p>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex items-center gap-3">
+                      <img
+                        loading="lazy"
+                        class="rounded-full"
+                        width="40"
+                        height="40"
+                        src="@prp_3087429"
+                        alt="@prp_7248"
+                      />
+                      <p class="text-zinc-500 text-sm">نویسنده : @prp_7248</p>
+                    </div>
+                    <a
+                      class="bg-primary-700 rounded text-sm text-white px-3 py-2 hover:bg-primary-950 transition-all duration-200 ease-in-out"
+                      href="@link"
+                      >ادامه مطلب</a
+                    >
+                  </div>
+                </div>
+                <div class="w-[50%]">
+                  <img
+                    loading="lazy"
+                    class="!w-full !h-full object-cover"
+                    src="@00673X00351prp"
+                    alt="@title"
+                    width="673"
+                    height="351"
+                  />
+                </div>
+              </div>
+            </face>
+            
+          </basis>
+        </div>
+      </section>
+
+      <section class="mt-[190px] flex w-full justify-center">
+        <div
+          class="w-full lg:w-[1024px] xl:w-[1200px] 2xl:w-[1280px] flex flex-col gap-4"
+        >
+          <basis core="list" datamembername="db.article-list2">
+            <layout>
+              <div class="grid grid-cols-3 gap-3">@child</div>
+            </layout>
+            <face filter="RowNumber<>1 and link is null and [prp_3087429] is null">
+              <article
+                class="flex flex-col px-3 py-4 gap-4 border border-zinc-300 rounded"
+              >
+                <h3 class="font-bold text-base">@title</h3>
+                <p class="font-normal text-sm text-zinc-900 line-clamp-4">
+                  @prp_7244
+                </p>
+                <div class="flex gap-4 items-center">
+                  <img
+                    loading="lazy"
+                    src="[##cms.cms.cdn##]/images/Calendar.png"
+                    alt="Calendar"
+                    class="w-6 h-6"
+                  />
+                  <p class="text-zinc-500 text-sm leading-6">@date</p>
+                </div>
+                <img
+                  loading="lazy"
+                  class="rounded !w-full"
+                  src="@00379X00209prp"
+                  width="379"
+                  height="209"
+                  alt="@title"
+                />
+                <div class="flex items-center gap-3">
+                  <img
+                    loading="lazy"
+                    class="rounded-full"
+                    width="40"
+                    height="40"
+                     src="[##cms.cms.cdn##]/images/person.png"
+                    alt="@prp_7248"
+                  />
+                  <p class="text-zinc-500 text-sm">نویسنده : @prp_7248</p>
+                </div>
+                <a
+                  href="/article.bc?id=@id"
+                  class="w-full hover:bg-primary-900 transition-all duration-200 ease-in-out py-3 bg-primary-700 text-center text-white rounded"
+                  >ادامه مطلب</a
+                >
+              </article>
+            </face>
+
+            <face filter="RowNumber<>1 and [prp_3087429] is null">
+              <article
+                class="flex flex-col px-3 py-4 gap-4 border border-zinc-300 rounded"
+              >
+                <h3 class="font-bold text-base">@title</h3>
+                <p class="font-normal text-sm text-zinc-900 line-clamp-4">
+                  @prp_7244
+                </p>
+                <div class="flex gap-4 items-center">
+                  <img
+                    loading="lazy"
+                    src="[##cms.cms.cdn##]/images/Calendar.png"
+                    alt="Calendar"
+                    class="w-6 h-6"
+                  />
+                  <p class="text-zinc-500 text-sm leading-6">@date</p>
+                </div>
+                <img
+                  loading="lazy"
+                  class="rounded !w-full"
+                  src="@00379X00209prp"
+                  width="379"
+                  height="209"
+                  alt="@title"
+                />
+                <div class="flex items-center gap-3">
+                  <img
+                    loading="lazy"
+                    class="rounded-full"
+                    width="40"
+                    height="40"
+                     src="[##cms.cms.cdn##]/images/person.png"
+                    alt="@prp_7248"
+                  />
+                  <p class="text-zinc-500 text-sm">نویسنده : @prp_7248</p>
+                </div>
+                <a
+                  href="@link"
+                  class="w-full hover:bg-primary-900 transition-all duration-200 ease-in-out py-3 bg-primary-700 text-center text-white rounded"
+                  >ادامه مطلب</a
+                >
+              </article>
+            </face>
+            <face filter="RowNumber<>1 ">
+              <article
+                class="flex flex-col px-3 py-4 gap-4 border border-zinc-300 rounded"
+              >
+                <h3 class="font-bold text-base">@title</h3>
+                <p class="font-normal text-sm text-zinc-900 line-clamp-4">
+                  @prp_7244
+                </p>
+                <div class="flex gap-4 items-center">
+                  <img
+                    loading="lazy"
+                    src="[##cms.cms.cdn##]/images/Calendar.png"
+                    alt="Calendar"
+                    class="w-6 h-6"
+                  />
+                  <p class="text-zinc-500 text-sm leading-6">@date</p>
+                </div>
+                <img
+                  loading="lazy"
+                  class="rounded !w-full"
+                  src="@00379X00209prp"
+                  width="379"
+                  height="209"
+                  alt="@title"
+                />
+                <div class="flex items-center gap-3">
+                  <img
+                    loading="lazy"
+                    class="rounded-full"
+                    width="40"
+                    height="40"
+                    src="@prp_3087429"
+                    alt="@prp_7248"
+                  />
+                  <p class="text-zinc-500 text-sm">نویسنده : @prp_7248</p>
+                </div>
+                <a
+                  href="@link"
+                  class="w-full hover:bg-primary-900 transition-all duration-200 ease-in-out py-3 bg-primary-700 text-center text-white rounded"
+                  >ادامه مطلب</a
+                >
+              </article>
+            </face>
+            <face filter="link is null and RowNumber<>1 ">
+              <article
+                class="flex flex-col px-3 py-4 gap-4 border border-zinc-300 rounded"
+              >
+                <h3 class="font-bold text-base">@title</h3>
+                <p class="font-normal text-sm text-zinc-900 line-clamp-4">
+                  @prp_7244
+                </p>
+                <div class="flex gap-4 items-center">
+                  <img
+                    loading="lazy"
+                    src="[##cms.cms.cdn##]/images/Calendar.png"
+                    alt="Calendar"
+                    class="w-6 h-6"
+                  />
+                  <p class="text-zinc-500 text-sm leading-6">@date</p>
+                </div>
+                <img
+                  loading="lazy"
+                  class="rounded !w-full"
+                  src="@00379X00209prp"
+                  width="379"
+                  height="209"
+                  alt="@title"
+                />
+                <div class="flex items-center gap-3">
+                  <img
+                    loading="lazy"
+                    class="rounded-full"
+                    width="40"
+                    height="40"
+                    src="@prp_3087429"
+                    alt="@prp_7248"
+                  />
+                  <p class="text-zinc-500 text-sm">نویسنده : @prp_7248</p>
+                </div>
+                <a
+                  href="/article.bc?id=@id"
+                  class="w-full hover:bg-primary-900 transition-all duration-200 ease-in-out py-3 bg-primary-700 text-center text-white rounded"
+                  >ادامه مطلب</a
+                >
+              </article>
+            </face>
+          </basis>
+
+          <div class="w-full flex gap-4 justify-center items-center">
+            <basis core="print" datamembername="db.paging">
+              <face filter="(@sta='pre')">
+                <a
+                  class="bg-primary-700 hover:bg-primary-900 w-14 h-14 flex justify-center items-center rounded-full"
+                  href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]"
+                  aria-label="angle-left"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M16.9139 11.7501L8.49994 20.1641L7.08594 18.7501L14.0859 11.7501L7.08594 4.7501L8.49994 3.3361L16.9139 11.7501Z"
+                      fill="#F6E8EC"
+                    />
+                  </svg>
+                </a>
+              </face>
+            </basis>
+
+            <basis core="print" datamembername="db.paging">
+              <face filter="(@page=[##cms.query.pagenum|(1)##])">
+                <a
+                  class="bg-primary-700 hover:bg-primary-900 text-white w-14 h-14 flex justify-center items-center rounded-full"
+                  href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]"
+                >
+                  @page
+                </a>
+              </face>
+              <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no')"
+              >
+                <a
+                  href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]"
+                  class="bg-primary-700 hover:bg-primary-900 text-white w-14 h-14 flex justify-center items-center rounded-full"
+                >
+                  @page
+                </a>
+              </face>
+            </basis>
+
+            <basis core="print" datamembername="db.paging">
+              <face filter="(@sta='nex')">
+                <a
+                  href="/[##cms.cms.link_page##]&pagenum=@page&catid=[##cms.query.catid##]"
+                  aria-label="angle-right"
+                  class="bg-primary-700 hover:bg-primary-900 rotate-180 w-14 h-14 flex justify-center items-center rounded-full"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M16.9139 11.7501L8.49994 20.1641L7.08594 18.7501L14.0859 11.7501L7.08594 4.7501L8.49994 3.3361L16.9139 11.7501Z"
+                      fill="#F6E8EC"
+                    />
+                  </svg>
+                </a>
+              </face>
+            </basis>
+          </div>
+
+          <div class="flex w-full my-6 justify-center">
+            <basis core="list" datamembername="db.soon-list">
+              <face>
+                <section class="flex w-full mb-24 justify-center">
+                  <div
+                    class="relative w-full h-[257px] lg:w-[950px] xl:w-[1200px] 2xl:w-[1280px]"
+                  >
+                    <img
+                      loading="lazy"
+                      class="!w-full !h-full object-cover z-0"
+                      src="@01280X00257prp"
+                      alt="@title"
+                      width="1280"
+                      height="257"
+                    />
+                    <div
+                      class="absolute w-full h-full top-0 py-6 left-0 z-10 flex items-center justify-around"
+                    >
+                      <div class="flex flex-col gap-2 w-[42%]">
+                        <h4 class="text-white text-[30px] font-bold">
+                          سریع پروازت رو رزرو کن
+                        </h4>
+                        <div
+                          class="line-clamp-2 text-white text-sm font-normal"
+                        >
+                          @prp_7244
+                        </div>
+                      </div>
+                      <div
+                        onclick="soonFunc()"
+                        class="flex !text-white h-[93px] soon-card2 cursor-pointer items-center justify-between px-4 py-3 bg-special-2 border border-zinc-600 rounded-lg w-[47%]"
+                      >
+                        <div class="flex flex-col gap-1">
+                          <p class="departureCity uppercase">@prp_3087425</p>
+                          <p class="uppercase hidden depId">@prp_3087423</p>
+                        </div>
+                        <div
+                          class="pt-3 translate-y-[10px] flight-type border-t border-dashed border-white w-[96%] mx-5 text-center"
+                        >
+                          @prp_3087428
+                        </div>
+                        <div class="flex flex-col gap-1">
+                          <p class="destinationCity uppercase">@prp_3087424</p>
+                          <p class="uppercase hidden desId">@prp_3087422</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </face>
+            </basis>
+          </div>
+
+          <basis core="list" datamembername="db.another-news-list">
+            <layout>
+              <div class="w-full flex flex-col gap-5">
+                <h5
+                  class="font-bold text-zinc-900 text-[24px] leading-8 text-right"
+                >
+                  دیگر اخبار
+                </h5>
+                <div class="grid grid-cols-2 w-full gap-y-4 gap-x-2">
+                  @child
+                </div>
+              </div>
+            </layout>
+            <face>
+              <a
+                class="p-1 rounded group transition-all duration-200 ease-in-out hover:bg-primary-800 hover:!text-white border border-zinc-300 flex gap-4"
+                href="@link"
+              >
+                <img
+                  loading="lazy"
+                  class="rounded h-full"
+                  src="@00084X00084prp"
+                  width="84"
+                  height="84"
+                  alt="@title"
+                />
+                <div class="flex flex-col gap-2 pl-4">
+                  <h6 class="font-bold text-base">@title</h6>
+                  <p
+                    class="font-normal transition-all duration-200 ease-in-out group-hover:text-white text-sm text-zinc-900 line-clamp-2"
+                  >
+                    @prp_7244
+                  </p>
+                </div>
+              </a>
+            </face>
+            <face filter="link is null">
+              <a
+                class="p-1 rounded group transition-all duration-200 ease-in-out hover:bg-primary-800 hover:!text-white border border-zinc-300 flex gap-4"
+                href="/article.bc?id=@id"
+              >
+                <img
+                  loading="lazy"
+                  class="rounded !h-full"
+                  src="@00084X00084prp"
+                  width="84"
+                  height="84"
+                  alt="@title"
+                />
+                <div class="flex flex-col gap-2 pl-4">
+                  <h6 class="font-bold text-base">@title</h6>
+                  <p
+                    class="font-normal transition-all duration-200 ease-in-out group-hover:text-white text-sm text-zinc-900 line-clamp-2"
+                  >
+                    @prp_7244
+                  </p>
+                </div>
+              </a>
+            </face>
+          </basis>
+        </div>
+      </section>
+    </main>
+    <basis core="call" file="footer.inc" />
+  </body>
+</html>
