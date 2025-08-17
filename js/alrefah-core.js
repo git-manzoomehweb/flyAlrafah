@@ -925,6 +925,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+// _____________________________________________________
 document.addEventListener("DOMContentLoaded", function () {
   const currencyContainer = document.querySelector(".currency-content");
 
@@ -1140,7 +1141,7 @@ async function RenderForm() {
 
 document
   .querySelector("#contactform button.data-body-btn")
-  .addEventListener("click", () => {
+  ?.addEventListener("click", () => {
     const inputs = document.querySelectorAll(
       "#contactform input:not([type='hidden'])"
     );

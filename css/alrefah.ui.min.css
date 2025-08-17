@@ -3240,9 +3240,7 @@ svg {
   box-shadow: rgba(50, 50, 93, 0.25) 0 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0 30px 60px -30px;
 }
-#search-box .Flightclass-Passenger .passengerbox {
-  width: 204% !important;
-}
+
 #search-box .plus-count,
 #search-box .minus-count {
   background-color: var(--secondary-950);
@@ -3550,6 +3548,9 @@ svg {
   color: white !important;
 }
 @media (min-width: 1024px) {
+  #search-box .Flightclass-Passenger .passengerbox {
+    width: 204% !important;
+  }
   .searchHistory-content {
     margin: 0 !important;
   }
@@ -3810,6 +3811,9 @@ svg {
 #search-box .deleteRoom {
   color: var(--primary-950);
 }
+#search-box .Basis_Date_Box p {
+  display: none !important;
+}
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -3846,4 +3850,7 @@ svg {
 }
 .calendar-apply-date:hover {
   background-color: var(--primary-500) !important;
+}
+.search-box-container.mobile-search-box .fixed-searchList ul:first-child {
+  border-bottom: none !important;
 }
