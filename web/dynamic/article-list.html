@@ -507,12 +507,12 @@
             id="wibpaging"
           >
             <basis core="print" datamembername="db.paging"
-              ><face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')"
+              ><face filter="(@sta='pre')and('[##cms.request.url##]'='')"
                 ><li
                   class="flex flex-col justify-center items-center page-no w-10 h-10 border border-neutralcolor-300 hover:bg-primary-500 hover:border-primary-500 hover:text-neutralcolor-950 leading-10 text-base mx-1.5 mb-2.5 text-neutralcolor-700 prev-page cursor-pointer"
                 >
                   <a
-                    href="/[##cms.cms.link_page##]&pagenum=@page"
+                    href="/[##cms.request.url##]&pagenum=@page"
                     aria-label="angle-left"
                     ><svg
                       width="25"
@@ -526,12 +526,12 @@
                         fill="#7A7A7A"
                       /></svg
                   ></a></li></face
-              ><face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')"
+              ><face filter="(@sta='pre')and('[##cms.request.url##]'<>'')"
                 ><li
                   class="flex flex-col justify-center items-center page-no w-10 h-10 border border-neutralcolor-300 hover:bg-primary-500 hover:border-primary-500 hover:text-neutralcolor-950 leading-10 text-base mx-1.5 mb-2.5 text-neutralcolor-700 prev-page cursor-pointer"
                 >
                   <a
-                    href="/[##cms.cms.pageurl##]?pagenum=@page"
+                    href="/[##cms.request.url##]?pagenum=@page"
                     aria-label="angle-left"
                     ><svg
                       width="25"
@@ -547,57 +547,57 @@
                   ></a></li></face></basis
             ><basis core="print" datamembername="db.paging"
               ><face
-                filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')"
+                filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.request.url##]'='')"
                 ><li
                   class="page-no w-10 h-10 leading-10 text-base mx-1.5 mb-2.5 text-neutralcolor-950 bg-primary-500 border-primary-500 inline-block"
                 >
                   <a
                     class="current leading-10"
-                    href="/[##cms.cms.link_page##]&pagenum=@page"
+                    href="/[##cms.request.url##]&pagenum=@page"
                     >@page</a
                   >
                 </li></face
               ><face
-                filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')"
+                filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.request.url##]'<>'')"
                 ><li
                   class="page-no w-10 h-10 leading-10 text-base mx-1.5 mb-2.5 text-neutralcolor-950 bg-primary-500 border-primary-500 inline-block"
                 >
                   <a
                     class="current leading-10"
-                    href="/[##cms.cms.pageurl##]?pagenum=@page"
+                    href="/[##cms.request.url##]?pagenum=@page"
                     >@page</a
                   >
                 </li></face
               ><face
-                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') "
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.request.url##]'='') "
                 ><li
                   class="page-no w-10 h-10 border border-neutralcolor-300 hover:bg-primary-500 hover:border-primary-500 hover:text-neutralcolor-950 leading-10 text-base mx-1.5 mb-2.5 text-neutralcolor-600 inline-block cursor-pointer"
                 >
                   <a
                     class="leading-10"
-                    href="/[##cms.cms.link_page##]&pagenum=@page"
+                    href="/[##cms.request.url##]&pagenum=@page"
                     >@page</a
                   >
                 </li></face
               ><face
-                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') "
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.request.url##]'<>'') "
                 ><li
                   class="page-no w-10 h-10 border border-neutralcolor-300 hover:bg-primary-500 hover:border-primary-500 hover:text-neutralcolor-950 leading-10 text-base mx-1.5 mb-2.5 text-neutralcolor-600 inline-block cursor-pointer"
                 >
                   <a
                     class="leading-10"
-                    href="/[##cms.cms.pageurl##]?pagenum=@page"
+                    href="/[##cms.request.url##]?pagenum=@page"
                     >@page</a
                   >
                 </li></face
               ></basis
             ><basis core="print" datamembername="db.paging"
-              ><face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')"
+              ><face filter="(@sta='nex') and ('[##cms.request.url##]'='')"
                 ><li
                   class="flex flex-col justify-center items-center page-no next-page w-10 h-10 border border-neutralcolor-300 hover:bg-primary-500 hover:border-primary-500 hover:text-neutralcolor-950 leading-10 text-base mx-1.5 mb-2.5 text-neutralcolor-700 cursor-pointer"
                 >
                   <a
-                    href="/[##cms.cms.link_page##]&pagenum=@page"
+                    href="/[##cms.request.url##]&pagenum=@page"
                     aria-label="angle-right"
                     ><svg
                       width="25"
@@ -611,12 +611,12 @@
                         fill="#7A7A7A"
                       /></svg
                   ></a></li></face
-              ><face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')"
+              ><face filter="(@sta='nex') and ('[##cms.request.url##]'<>'')"
                 ><li
                   class="flex flex-col justify-center items-center page-no next-page w-10 h-10 border border-neutralcolor-300 hover:bg-primary-500 hover:border-primary-500 hover:text-neutralcolor-950 leading-10 text-base mx-1.5 mb-2.5 text-neutralcolor-700 cursor-pointer"
                 >
                   <a
-                    href="/[##cms.cms.pageurl##]?pagenum=@page"
+                    href="/[##cms.request.url##]?pagenum=@page"
                     aria-label="angle-right"
                     ><svg
                       width="25"
