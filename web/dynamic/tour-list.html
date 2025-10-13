@@ -104,12 +104,13 @@
       rel="stylesheet"
       href="[##cms.cms.cdn##]/css/babanowrouz.ui.min.css"
     />
-    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="style.inc" pageindex="[##cms.cms.pageindex##]" lid="2"/>
+    <basis core="call" file="analytics-head.inc" lid="2" />
   </head>
   <body
     onload="loadContentTourListPage('[##cms.query.catid##]','tour', 'load-tour-list')"
   >
-    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="header.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
     <main class="dir-rtl font-danaregular">
       <div class="h-12 w-full bg-primary-600">
         <basis core="print" datamembername="db.scalar"
@@ -401,7 +402,7 @@
       >
     </main>
     <!-- footer start-->
-    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="footer.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
     <!-- footer end-->
   </body>
 </html>

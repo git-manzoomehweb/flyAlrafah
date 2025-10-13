@@ -65,6 +65,7 @@
       file="style.inc"
       pageindex="[##cms.cms.pageindex##]"
     />
+    <basis core="call" file="analytics-head.inc" lid="2" />
   </head>
 
 <body class="relative" onload="loadContentArticlePage()">
@@ -75,7 +76,7 @@
                     <figure class="relative overflow-hidden h-538px rounded-xl ">
               <basis core="print" datamembername="db.gallery">
                 <face>
-    <img loading="lazy" class="w-full h-538px rounded-xl object-cover " loading="lazy" src="@largeIMG" width="1280" height="538" alt="banner image">
+    <img loading="lazy" class="w-full h-538px rounded-xl object-cover " loading="lazy" src="@largeIMG" width="1280" height="538" alt="@name">
 
                 </face>
               </basis>          
