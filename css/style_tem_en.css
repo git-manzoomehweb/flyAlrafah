@@ -67,9 +67,9 @@ i[class^="flaticon-"]:before {
 .ui-datepicker-today .ui-state-highlight {
   background-color: var(--primary);
 }
-.background-color_1 {
+/* .background-color_1 {
   background-color: var(--secondary-500) !important;
-}
+} */
 .background-color_2,
 .news-frm input.submit:hover {
   background: var(--primary);
@@ -702,4 +702,11 @@ i[class^="flaticon-"]:before {
 }
 .flaticon-phone-call:before {
   content: "\f136";
+}
+.login-left-part .bottom-content {
+  margin-top: 0 !important;
+}
+
+.login-left-part .bottom-content {
+  margin-top: 0 !important;
 }

@@ -858,3 +858,6 @@ body.tour .tour-bg {
 body.insurance .insurance-bg {
   display: block !important;
 }
+.login-left-part .bottom-content {
+  margin-top: 0 !important;
+}
