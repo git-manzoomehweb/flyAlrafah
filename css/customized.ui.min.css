@@ -861,3 +861,6 @@ body.insurance .insurance-bg {
 .login-left-part .bottom-content {
   margin-top: 0 !important;
 }
+.bg-primary {
+  background-color: var(--primary);
+}
