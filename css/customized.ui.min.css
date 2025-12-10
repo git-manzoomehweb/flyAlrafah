@@ -772,7 +772,7 @@ svg {
   box-shadow: rgba(0, 0, 0, 0.15) 0 5px 15px 0;
 }
 .currency-list ul {
-  height: 290px;
+  height: 220px;
   overflow-y: auto !important;
   display: flex;
   flex-direction: column;
@@ -863,4 +863,11 @@ body.insurance .insurance-bg {
 }
 .bg-primary {
   background-color: var(--primary);
+}
+.absolute {
+  position: absolute;
+}
+.book-card__container .book-card__btn {
+  border-color: var(--secondary-700) !important;
+  color: var(--secondary-900) !important;
 }
