@@ -1038,6 +1038,10 @@ function localStorage_setCurrency(currency_unit, currency_cost, floatdigit) {
   };
   localStorage.setItem("currencyObject", JSON.stringify(currencyObject));
   localStorage_getCurrency();
+   // feat: add params for chunk
+  if (window.location.pathname === '/flight/search') {
+    updatePricesWithCurrency();
+  }
 }
 
 function localStorage_getCurrency() {
