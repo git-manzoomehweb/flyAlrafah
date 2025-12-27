@@ -871,3 +871,6 @@ body.insurance .insurance-bg {
   border-color: var(--secondary-700) !important;
   color: var(--secondary-900) !important;
 }
+.widget-icon {
+    background: var(--secondary) !important;
+}
